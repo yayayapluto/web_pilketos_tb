@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Candidate\storeRequest;
+use App\Http\Requests\Candidate\updateRequest;
+use App\Http\Resources\CandidateResource;
+use App\Models\Candidate;
+use App\Responses\SendRedirect;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -11,7 +16,8 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        $candidates = Candidate::all();
+        return view("candidate.index", compact("candidates"));
     }
 
     /**
@@ -19,46 +25,95 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        //
+        return view("candidate.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data["candidate_id"] = (string) \Str::uuid();
+
+        if (!Candidate::create($data)) {
+            return SendRedirect::withMessage("candidate.create", false, "Failed to store new data, please try again");
+        }
+
+        return SendRedirect::withMessage("candidate.index", true, "Data stored successfully");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $uuid)
     {
-        //
+        if (!uuid_is_valid($uuid)) {
+            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+        }
+
+        $candidate = Candidate::where('candidate_id', $uuid)->first();
+        if (!$candidate) {
+            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+        }
+
+        return view("candidate.show", compact("candidate"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $uuid)
     {
-        //
+        if (!uuid_is_valid($uuid)) {
+            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+        }
+
+        $candidate = Candidate::where('candidate_id', $uuid)->first();
+        if (!$candidate) {
+            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+        }
+
+        return view("candidate.edit", compact("candidate"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateRequest $request, string $uuid)
     {
-        //
+        if (!uuid_is_valid($uuid)) {
+            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+        }
+
+        $candidate = Candidate::where('candidate_id', $uuid)->first();
+        if (!$candidate) {
+            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+        }
+
+        $data = $request->validated();
+
+        $candidate->update($data);
+
+        return SendRedirect::withMessage("candidate.index", true, "Candidate updated successfully");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $uuid)
     {
-        //
+        if (!uuid_is_valid($uuid)) {
+            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+        }
+
+        $candidate = Candidate::where('candidate_id', $uuid)->first();
+        if (!$candidate) {
+            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+        }
+
+        $candidate->delete();
+
+        return SendRedirect::withMessage("candidate.index", true, "Candidate deleted successfully");
     }
 }

@@ -4,8 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Voting extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'voting_id',
+        'nisn',
+        'candidate_id',
+    ];
+
+    protected $casts = [
+        'voting_id' => 'uuid',
+    ];
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_id', 'candidate_id');
+    }
 }

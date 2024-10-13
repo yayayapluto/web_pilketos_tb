@@ -1,3 +1,13 @@
+<x-alert />
 <div>
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
+    @forelse ($candidates as $c)
+        <strong>{{$c->candidate_id}}</strong>
+        <li>{{$c->image}}</li>
+        <li>{{$c->name}}</li>
+        <li>{{$c->description}}</li>
+        <li>{{$c->external_link}}</li>
+        <br>
+    @empty
+        <li>Kosong</li>
+    @endforelse
 </div>

@@ -14,7 +14,7 @@ class SendRedirect
         //
     }
 
-    public static function sendRedirect(string $route, $success = true, $message = null) {
+    public static function withMessage(string $route, $success = true, $message = null) {
         if ($success) {
             return Redirect::route($route)->with("success", $message ?? "succesful");
         }

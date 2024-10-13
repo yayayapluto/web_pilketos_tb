@@ -1,4 +1,4 @@
 <x-alert />
 <div>
-    <p>dashboard</p>
+    <p>monitor</p>
 </div>
