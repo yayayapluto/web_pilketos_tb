@@ -1,0 +1,1 @@
+alert.blade.php is a component to show alert either errors and success, use the component in all views for DRY CODE!!

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'user_id' => (string) \Str::uuid(),
             'username' => 'admin',
-            'password' => Hash::make('Smktb123'),
+            'password' => Hash::make('Smktb@123'),
             'created_by' => 'system',
         ]);
         Candidate::factory(3)->create();
