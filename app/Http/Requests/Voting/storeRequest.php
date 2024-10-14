@@ -24,14 +24,13 @@ class storeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'voting_id' => "required|uuid|unique:votings,voting_id",
             'nisn' => "required|string|digits:10",
-            'candidate_id' => "required|uuid|exists:candidate,candidate_id",
+            'candidate_id' => "required|uuid|exists:candidates,candidate_id"
         ];
     }
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        throw new ValidationException($validator, SendRedirect::withMessage("candidate.update", false, $validator->getMessageBag()));
+        throw new ValidationException($validator, SendRedirect::withMessage("voting", false, $validator->errors()));
     }
 }

@@ -12,7 +12,7 @@
 
     <x-alert />
 
-    <form action="{{ route('candidate.update', $candidate->candidate_id) }}" method="POST">
+    <form action="{{ route('candidates.update', $candidate->candidate_id) }}" method="POST">
         @csrf
         @method('PUT')
         <div>

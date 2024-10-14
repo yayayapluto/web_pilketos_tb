@@ -16,10 +16,6 @@ class Voting extends Model
         'candidate_id',
     ];
 
-    protected $casts = [
-        'voting_id' => 'uuid',
-    ];
-
     public function candidate()
     {
         return $this->belongsTo(Candidate::class, 'candidate_id', 'candidate_id');

@@ -12,7 +12,7 @@
 
     <x-alert />
 
-    <form action="{{ route('candidate.create') }}" method="POST">
+    <form action="{{ route('candidates.create') }}" method="POST">
         @csrf
         <div>
             <label for="image">Image:</label>
