@@ -25,7 +25,6 @@ class storeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'candidate_id' => "required|uuid|unique:candidates,candidate_id",
             'image' => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
             'name' => "required|string|max:255",
             'description' => "required|string",

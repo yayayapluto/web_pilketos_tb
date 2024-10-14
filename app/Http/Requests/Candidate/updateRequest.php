@@ -37,6 +37,6 @@ class updateRequest extends FormRequest
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        throw new ValidationException($validator, SendRedirect::withMessage("candidate.update", false, $validator->getMessageBag()));
+        throw new ValidationException($validator, SendRedirect::withMessage("candidates.update", false, $validator->getMessageBag()));
     }
 }

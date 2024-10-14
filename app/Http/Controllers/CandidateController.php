@@ -34,17 +34,17 @@ class CandidateController extends Controller
     public function store(storeRequest $request)
     {
         $data = $request->validated();
-        $request->merge(["candidate_id", (string) \Str::uuid()]);
+        $data['candidate_id'] = (string) \Str::uuid();
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('candidateImages', 'public');
         }
 
         if (!Candidate::create($data)) {
-            return SendRedirect::withMessage("candidate.create", false, "Failed to store new data, please try again");
+            return SendRedirect::withMessage("candidates.create", false, "Failed to store new data, please try again");
         }
 
-        return SendRedirect::withMessage("candidate.index", true, "Data stored successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Data stored successfully");
     }
 
     /**
@@ -53,12 +53,12 @@ class CandidateController extends Controller
     public function show(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
         }
 
         return view("candidate.show", compact("candidate"));
