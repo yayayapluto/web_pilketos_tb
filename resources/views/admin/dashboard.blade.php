@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-</head>
-<body>
+@extends('app.dashboard.main')
+
+@section('pageTitle', "Dashboard")
+@section('breadcrumbs')
+
+<li>Dashboard</li>
+
+@endsection
+
+@section('content')
+
     <x-alert />
-    <h1>Dashboard</h1>
+    
     <br>
     <h2>Grafik yang sudah vote dan belum</h2>
     <ul>
@@ -22,5 +24,10 @@
             <li>{{ $label }}: {{ $candidateVoteData[$index] }}</li>
         @endforeach
     </ul>
-</body>
-</html>
+
+
+@endsection
+
+
+
+

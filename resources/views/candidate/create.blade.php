@@ -12,11 +12,11 @@
 
     <x-alert />
 
-    <form action="{{ route('candidates.create') }}" method="POST">
+    <form action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="image">Image:</label>
-            <input type="text" id="image" name="image" required>
+            <input type="file" id="image" name="image" accept="image/*" required>
         </div>
         <div>
             <label for="name">Name:</label>
@@ -28,7 +28,7 @@
         </div>
         <div>
             <label for="external_link">External Link:</label>
-            <input type="url" id="external_link" name="external_link">
+            <input type="url" id="external_link" name="external_link" required>
         </div>
         <div>
             <button type="submit">Create Candidate</button>

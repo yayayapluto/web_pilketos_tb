@@ -12,12 +12,13 @@
 
     <x-alert />
 
-    <form action="{{ route('candidates.update', $candidate->candidate_id) }}" method="POST">
+    <form action="{{ route('candidates.update', $candidate->candidate_id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div>
             <label for="image">Image:</label>
-            <input type="text" id="image" name="image" value="{{ $candidate->image }}" required>
+            <input type="file" id="image" name="image" accept="image/*">
+            <p>Current Image: <img src="{{ asset('storage/' . $candidate->image) }}" alt="Current Image" style="max-width: 200px;"></p>
         </div>
         <div>
             <label for="name">Name:</label>

@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Voting\storeRequest;
 use App\Models\Voting;
+use App\Responses\Easter;
 use App\Responses\SendRedirect;
 use Illuminate\Http\Request;
 
 class VotingController extends Controller
 {
+
     public function store(storeRequest $req){
         $data = $req->validated();
 
-        if (!self::checkNISN("1099999999")) {
-            return SendRedirect::withMessage("voting", true, "NISN not valid");
+        if (!self::checkNISN((string) $req->input("nisn") )) {
+            return SendRedirect::withMessage("voting", true, "NISN not registered");
         }
 
         if (Voting::where("nisn", $data["nisn"])->first()) {
@@ -30,6 +32,13 @@ class VotingController extends Controller
     }
 
     private function checkNISN(string $nisn) {
-        return true;
+        $data_nisn = [
+            "1234567890",
+            "0987654321",
+            "1357924680",
+            "2468013579",
+        ];
+
+        return in_array($nisn, $data_nisn, true);
     }
 }

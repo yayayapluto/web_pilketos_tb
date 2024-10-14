@@ -26,13 +26,14 @@ class storeRequest extends FormRequest
     {
         return [
             'candidate_id' => "required|uuid|unique:candidates,candidate_id",
-            'image' => "required|string",
+            'image' => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
             'name' => "required|string|max:255",
             'description' => "required|string",
             'external_link' => "required|string|url",
             'created_by' => "required|string",
         ];
     }
+
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {

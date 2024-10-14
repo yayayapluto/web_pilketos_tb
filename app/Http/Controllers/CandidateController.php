@@ -36,6 +36,10 @@ class CandidateController extends Controller
         $data = $request->validated();
         $data["candidate_id"] = (string) \Str::uuid();
 
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('candidateImages', 'public');
+        }
+
         if (!Candidate::create($data)) {
             return SendRedirect::withMessage("candidate.create", false, "Failed to store new data, please try again");
         }
@@ -92,6 +96,10 @@ class CandidateController extends Controller
         }
 
         $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('candidateImages', 'public');
+        }
 
         $candidate->update($data);
 

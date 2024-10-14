@@ -25,7 +25,7 @@ class updateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => "nullable|string",
+            'image' => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
             'name' => "nullable|string|max:255",
             'description' => "nullable|string",
             'external_link' => "nullable|string|url",
@@ -33,6 +33,7 @@ class updateRequest extends FormRequest
             'deleted_by' => "nullable|string"
         ];
     }
+
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
