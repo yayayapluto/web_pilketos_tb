@@ -1,13 +1,11 @@
-<script>
-    @if (session('error'))
-        alert('{{ session('error') }}');
-    @endif
+@if (session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
 
-    @if (session('success'))
-        alert('{{ session('success') }}');
-    @endif
-
-    @if ($errors->any())
-        alert('Errors:\n{{ implode('\n', $errors->all()) }}');
-    @endif
-</script>
+@if ($errors->any())
+    <script>
+        alert("{{ implode('\\n', $errors->all()) }}");
+    </script>
+@endif

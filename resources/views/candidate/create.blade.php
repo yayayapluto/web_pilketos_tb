@@ -1,39 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends("layouts.candidate.create")
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Candidate</title>
-</head>
+@section("title", "New Candidate")
 
-<body>
-    <h1>Create Candidate</h1>
+@section("header", "New Candidate Form")
 
-    <x-alert />
-
+@section("content")
     <form action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div>
-            <label for="image">Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-        </div>
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea>
-        </div>
-        <div>
-            <label for="external_link">External Link:</label>
-            <input type="url" id="external_link" name="external_link" required>
-        </div>
-        <div>
-            <button type="submit">Create Candidate</button>
-        </div>
-    </form>
-</body>
+        @method("POST")
 
-</html>
+        <div>
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" required>
+        </div>
+
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div>
+            <label for="description">Description</label>
+            <textarea name="description" id="description" required></textarea>
+        </div>
+
+        <div>
+            <label for="external_link">External Link</label>
+            <input type="url" name="external_link" id="external_link" required>
+        </div>
+
+        <button type="submit">Create Candidate</button>
+    </form>
+@endsection

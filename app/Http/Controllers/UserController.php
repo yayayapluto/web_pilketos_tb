@@ -55,7 +55,7 @@ class UserController extends Controller
         foreach ($votings as $voting) {
             $transactionData[] = [
                 'nisn' => $voting->nisn,
-                'candidate' => $voting->candidate->name,
+                'candidate' => $voting->candidate->name ?? "[Kandidat Dihapus]",
                 'time' => $voting->created_at->format('Y-m-d H:i:s'),
             ];
         }

@@ -1,33 +1,21 @@
-@extends('app.dashboard.main')
+@extends('layouts.admin.dashboard')
 
-@section('pageTitle', "Dashboard")
-@section('breadcrumbs')
-
-<li>Dashboard</li>
-
-@endsection
+@section('title', 'Admin Dashboard')
 
 @section('content')
-
-    <x-alert />
+    <h1>Dashboard</h1>
     
-    <br>
-    <h2>Grafik yang sudah vote dan belum</h2>
+    <h2>Voting Status</h2>
     <ul>
-        <li>{{ $voteStatusLabel[0] }}: {{ $voteStatusData[0] }}</li>
-        <li>{{ $voteStatusLabel[1] }}: {{ $voteStatusData[1] }}</li>
-    </ul>
-    <br>
-    <h2>Grafik perbandingan antar kandidat</h2>
-    <ul>
-        @foreach ($candidateVoteLabel as $index => $label)
-            <li>{{ $label }}: {{ $candidateVoteData[$index] }}</li>
+        @foreach($voteStatusLabel as $index => $label)
+            <li>{{ $label }}: {{ $voteStatusData[$index] }}</li>
         @endforeach
     </ul>
 
-
+    <h2>Candidate Votes</h2>
+    <ul>
+        @foreach($candidateVoteLabel as $index => $label)
+            <li>{{ $label }}: {{ $candidateVoteData[$index] }}</li>
+        @endforeach
+    </ul>
 @endsection
-
-
-
-

@@ -30,13 +30,12 @@ class storeRequest extends FormRequest
             'name' => "required|string|max:255",
             'description' => "required|string",
             'external_link' => "required|string|url",
-            'created_by' => "required|string",
         ];
     }
 
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        throw new ValidationException($validator, SendRedirect::withMessage("candidate.create", false, $validator->getMessageBag()));
+        throw new ValidationException($validator, SendRedirect::withMessage("candidates.create", false, $validator->getMessageBag()));
     }
 }

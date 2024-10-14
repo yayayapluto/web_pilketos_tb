@@ -34,7 +34,7 @@ class CandidateController extends Controller
     public function store(storeRequest $request)
     {
         $data = $request->validated();
-        $data["candidate_id"] = (string) \Str::uuid();
+        $request->merge(["candidate_id", (string) \Str::uuid()]);
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('candidateImages', 'public');
@@ -70,12 +70,12 @@ class CandidateController extends Controller
     public function edit(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
         }
 
         return view("candidate.edit", compact("candidate"));
@@ -87,12 +87,12 @@ class CandidateController extends Controller
     public function update(updateRequest $request, string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
         }
 
         $data = $request->validated();
@@ -103,7 +103,7 @@ class CandidateController extends Controller
 
         $candidate->update($data);
 
-        return SendRedirect::withMessage("candidate.index", true, "Candidate updated successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Candidate updated successfully");
     }
 
     /**
@@ -112,16 +112,16 @@ class CandidateController extends Controller
     public function destroy(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidate.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidate.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
         }
 
         $candidate->delete();
 
-        return SendRedirect::withMessage("candidate.index", true, "Candidate deleted successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Candidate deleted successfully");
     }
 }

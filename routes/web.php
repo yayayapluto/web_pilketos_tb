@@ -8,16 +8,13 @@ use App\Http\Controllers\VotingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", [ViewController::class, "landing"])->name("landing");
-
-//Publik kandidat
-Route::get('/candidates', [CandidateController::class, 'index'])->name('candidate.index');
-Route::get('/candidates/{uuid}', [CandidateController::class, 'show'])->name('candidate.show');
-
-//Public kandidat
+Route::get("/voting/{uuid}", [ViewController::class, "showCandidate"])->name("candidate");
 Route::get("/voting", [ViewController::class, "showVotingForm"])->name("voting");
+
+// Public candidate voting
 Route::post('/voting', [VotingController::class, 'store'])->name('voting.submit');
 
-//Auth user dan kandidat
+// Authenticated user and candidate routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [UserController::class, 'showDashboardPage'])->name('admin.dashboard');
     Route::get('/admin/monitor', [UserController::class, 'showMonitorPage'])->name('admin.monitor');
@@ -25,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// Guest routes
 Route::middleware(["guest"])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.submit');

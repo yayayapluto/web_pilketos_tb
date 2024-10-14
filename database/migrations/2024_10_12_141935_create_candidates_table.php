@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->uuid("candidate_id");
+            $table->uuid("candidate_id")->unique();
             $table->string('image');
             $table->string('name');
             $table->text('description');
