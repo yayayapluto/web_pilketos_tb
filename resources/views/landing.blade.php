@@ -2,7 +2,10 @@
 
 @section('title', 'Welcome')
 
-@section('header', 'Candidates List')
+@section('header')
+    <x-head></x-head>
+    <x-navbar></x-navbar>
+@endsection
 
 @section('content')
     <div>
@@ -12,7 +15,7 @@
                 <h2>{{ $candidate->name }}</h2>
                 <p>{{ $candidate->description }}</p>
                 <p><a href="{{ $candidate->external_link }}" target="_blank">Link Eksternal</a></p>
-                <a href="{{route("candidate", $candidate->candidate_id)}}">Cek Selengkapnya</a>
+                <a href="{{ route('candidate', $candidate->candidate_id) }}">Cek Selengkapnya</a>
             </div>
         @endforeach
     </div>

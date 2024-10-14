@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Candidate;
 
 use App\Responses\SendRedirect;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
 

@@ -6,8 +6,10 @@ use App\Models\Candidate;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Voting;
-use Hash;
 use Illuminate\Database\Seeder;
+use illuminate\Support\Facades\Hash;
+use Illuminate\Support\Stringable;
+
 
 class DatabaseSeeder extends Seeder
 {
