@@ -1,21 +1,79 @@
 @extends('layouts.admin.dashboard')
 
-@section('title', 'Admin Dashboard')
-
 @section('content')
-    <h1>Dashboard</h1>
-    
-    <h2>Voting Status</h2>
-    <ul>
-        @foreach($voteStatusLabel as $index => $label)
-            <li>{{ $label }}: {{ $voteStatusData[$index] }}</li>
-        @endforeach
-    </ul>
+<main class="app-main">
+    <!--begin::App Content-->
+    <div class="app-content">
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5>Voting Status</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div id="voteStatusChart" style="height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>Candidate Votes</h2>
-    <ul>
-        @foreach($candidateVoteLabel as $index => $label)
-            <li>{{ $label }}: {{ $candidateVoteData[$index] }}</li>
-        @endforeach
-    </ul>
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h5>Candidate Votes</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div id="candidateVoteChart" style="height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::App Content-->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        // Voting Status Chart
+        const voteStatusOptions = {
+            chart: {
+                type: 'pie',
+                height: '100%', // Make it responsive
+            },
+            series: @json(array_reverse($voteStatusData)),
+            labels: @json(array_reverse($voteStatusLabel)),
+            colors: ['#007bff', '#dc3545'], // AdminLTE colors
+            title: {
+                text: 'Voting Status',
+                align: 'center'
+            },
+        };
+
+        const voteStatusChart = new ApexCharts(document.querySelector("#voteStatusChart"), voteStatusOptions);
+        voteStatusChart.render();
+
+        // Candidate Votes Chart
+        const candidateVoteOptions = {
+            chart: {
+                type: 'bar',
+                height: '100%', // Make it responsive
+            },
+            series: [{
+                name: 'Votes',
+                data: @json($candidateVoteData),
+            }],
+            xaxis: {
+                categories: @json($candidateVoteLabel),
+            },
+            colors: ['#28a745'], // AdminLTE success color
+            title: {
+                text: 'Candidate Votes',
+                align: 'center'
+            },
+        };
+
+        const candidateVoteChart = new ApexCharts(document.querySelector("#candidateVoteChart"), candidateVoteOptions);
+        candidateVoteChart.render();
+    </script>
+</main>
 @endsection

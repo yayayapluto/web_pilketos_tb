@@ -10,4 +10,3 @@
     <p>{{ $candidate->description }}</p>
     <a href="{{ $candidate->external_link }}">{{ $candidate->external_link }}</a>
 @endsection
-    

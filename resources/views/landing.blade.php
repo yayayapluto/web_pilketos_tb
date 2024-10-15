@@ -4,7 +4,7 @@
 
 @section('header')
     <x-head></x-head>
-    <x-navbar></x-navbar>
+    <x-client_navbar></x-client_navbar>
 @endsection
 
 @section('content')
@@ -12,12 +12,19 @@
         <div class="container-fluid text-center text-white" style="margin-top: 200px">
             <div class="top-side">
                 <img src="assets/logoTB/mpk-white-bg.png" alt="" width="150" height="150">
-                <h2 class="text-wrap font-weight-bold" style="width: 40rem">"Suaramu, Aksimu! Jadilah Bagian dari Perubahan,
-                    Pilih Ketua OSIS
-                    Masa Depan!"</h2>
+
+                <div class="unselectable">
+                    <h2 class="text-wrap font-weight-bold " style="width: 40rem">"Suaramu, Aksimu! Jadilah Bagian dari
+                        Perubahan,
+                        Pilih Ketua OSIS
+                        Masa Depan!"</h2>
+                </div>
+
                 <img src="assets/logoTB/IMG_4425.PNG" alt="" width="150" height="150">
             </div>
-            <button type="button" class="btn btn-light">Pilih</button>
+            <button type="button" class="btn btn-light text-blue">
+                Pilih
+            </button>
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -27,7 +34,7 @@
     </svg>
 
     <div class="container mt-5">
-        <h1 class="text-center">Kandidat</h1>
+        <h1 class="text-center text-dark">Kandidat</h1>
         <div class="row justify-content-center">
             @foreach ($candidates as $candidate)
                 <div class="col-md-4">
@@ -36,25 +43,24 @@
                             class="fixed-img card-img-top" alt="...">
                         <div class="card-body">
                             <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
-                            {{-- <p class="card-text">{{ $candidate->description }}</p> --}}
                         </div>
 
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-
+                        <div class="card-footer d-flex">
                             <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
                                 role="button">
-                                <i class="bi bi-info-circle"></i> Info</a>
-                            {{-- <p><a href="{{ $candidate->external_link }}" target="_blank">Link Eksternal</a></p> --}}
-
+                                <i class="bi bi-info-circle"></i> Info
+                            </a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-        <a class="btn btn-primary" href="#" role="button">Pilih</a>
+        <div class="text-center m-5">
+            <a class="btn btn-primary" href="#" role="button">Pilih</a>
+        </div>
     </div>
 @endsection
 
 @section('footer')
-    <x-footer></x-footer>
+    <x-client_footer></x-client_footer>
 @endsection

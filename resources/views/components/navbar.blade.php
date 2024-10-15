@@ -1,28 +1,21 @@
-<nav class="navbar bg-white">
+<!--begin::Header-->
+<nav class="app-header navbar navbar-expand bg-body">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="assets/logoTB/mpk-white-bg.png" alt="Logo2" width="60" height="60"
-                class="d-inline-block align-text-middle">
-
-            <img src="assets/logoTB/IMG_4425.PNG" alt="Logo1" width="60" height="60"
-                class="d-inline-block align-text-middle">
-
-        </a>
-        <ul class="justify-content-end d-flex gap-5">
-            <li class="nav-item">
-                <a href="#" class="text-decoration-none text-mute text-body-secondary" aria-current="page">
-                    <h5>
-                        Home
-                    </h5>
+        <span class="navbar-text">SMK Taruna Bhakti Depok</span>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="d-none d-md-inline">
+                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                    </span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="text-decoration-none text-mute text-body-secondary" aria-current="page">
-                    <h5>
-                        Kandidat
-                    </h5>
-                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                    <li class="user-footer">
+                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </nav>
+<!--end::Header-->

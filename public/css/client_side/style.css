@@ -9,6 +9,15 @@ html * {
     display: none;
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .main-hero {
     background-color: #009DFF;
 }
@@ -21,7 +30,7 @@ html * {
     max-width: fit-content;
 }
 
-.nav-item a:hover{
+.nav-btn :hover {
     color: #009DFF;
 }
 

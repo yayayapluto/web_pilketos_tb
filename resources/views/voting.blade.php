@@ -2,7 +2,10 @@
 
 @section('title', 'Welcome')
 
-@section('header', 'Candidates List')
+@section('header')
+    <x-head></x-head>
+    <x-client_navbar></x-client_navbar>
+@endsection
 
 @section('content')
     <div>
@@ -27,13 +30,26 @@
         <hr>
 
         @foreach ($candidates as $candidate)
-            <div style="margin-bottom: 20px;">
-                <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}" style="width: 100px;">
-                <h2>{{ $candidate->name }}</h2>
-                <p>{{ $candidate->description }}</p>
-                <p><a href="{{ $candidate->external_link }}" target="_blank">Link Eksternal</a></p>
-                <a href="{{ route('candidate', $candidate->candidate_id) }}">Cek Selengkapnya</a>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                        class="fixed-img card-img-top" alt="...">
+                    <div class="card-body">
+                        <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+
+                        <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}" role="button">
+                            <i class="bi bi-info-circle"></i> Info
+                        </a>
+                    </div>
+                </div>
             </div>
         @endforeach
     </div>
+@endsection
+
+@section('footer')
+    <x-client_footer></x-client_footer>
 @endsection
