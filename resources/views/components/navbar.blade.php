@@ -8,16 +8,16 @@
                 class="d-inline-block align-text-middle">
 
         </a>
-        <ul class="navbar-nav justify-content-end d-flex flex-row gap-5">
+        <ul class="justify-content-end d-flex gap-5">
             <li class="nav-item">
-                <a href="#" class="nav-link-active" aria-current="page">
+                <a href="#" class="text-decoration-none text-mute text-body-secondary" aria-current="page">
                     <h5>
                         Home
                     </h5>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link-active" aria-current="page">
+                <a href="#" class="text-decoration-none text-mute text-body-secondary" aria-current="page">
                     <h5>
                         Kandidat
                     </h5>

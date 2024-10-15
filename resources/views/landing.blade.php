@@ -26,22 +26,27 @@
         </path>
     </svg>
 
-    <div>
+    <div class="container mt-5">
         <h1 class="text-center">Kandidat</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row justify-content-center">
             @foreach ($candidates as $candidate)
-                <div class="col">
-                    <div class="card">
+                <div class="col-md-4">
+                    <div class="card text-center">
                         <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
-                            class="card-img-top" alt="...">
+                            class="fixed-img card-img-top" alt="...">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $candidate->name }}</h2>
+                            <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
                             {{-- <p class="card-text">{{ $candidate->description }}</p> --}}
                         </div>
-                        <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}" role="button">
-                            <i class="bi bi-info-circle"></i> Info</a>
-                        <p><a href="{{ $candidate->external_link }}" target="_blank">Link Eksternal</a></p>
-                        <p></p>
+
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+
+                            <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
+                                role="button">
+                                <i class="bi bi-info-circle"></i> Info</a>
+                            {{-- <p><a href="{{ $candidate->external_link }}" target="_blank">Link Eksternal</a></p> --}}
+
+                        </div>
                     </div>
                 </div>
             @endforeach
