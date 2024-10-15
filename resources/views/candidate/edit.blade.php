@@ -5,7 +5,9 @@
 @section("header", "Edit Candidate")
 
 @section("content")
-    <div class="container-fluid mt-4">
+    <main class="app-main">
+        <div class="app-content">
+<div class="container-fluid mt-4">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Edit Candidate</h3>
@@ -41,4 +43,6 @@
             </div>
         </div>
     </div>
+        </div>
+    </main>
 @endsection
