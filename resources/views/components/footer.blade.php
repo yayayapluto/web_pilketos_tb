@@ -10,10 +10,18 @@
                 <h5 class="mb-4">Kontak kami</h5>
                 <div class="container d-flex flex-row" style="gap: 44px">
 
-                    <i class="bi bi-instagram"></i>
-                    <i class="bi bi-tiktok"></i>
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-youtube"></i>
+                    <a href="https://www.instagram.com/pplg.starbhak?igsh=MWk1em1vaDRuZG41Mw==">
+                        <i class="bi bi-instagram" style="width: 100%"></i>
+                    </a>
+                    <i class="bi bi-tiktok" style="width: 100%">
+                        <a href=""></a>
+                    </i>
+                    <i class="bi bi-facebook" style="width: 100%">
+                        <a href=""></a>
+                    </i>
+                    <i class="bi bi-youtube" style="width: 100%">
+                        <a href=""></a>
+                    </i>
                 </div>
             </div>
         </div>
