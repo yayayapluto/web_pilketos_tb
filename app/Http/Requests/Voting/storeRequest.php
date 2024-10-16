@@ -25,7 +25,9 @@ class storeRequest extends FormRequest
     {
         return [
             'nisn' => "required|string|digits:10",
-            'candidate_id' => "required|uuid|exists:candidates,candidate_id"
+            'candidate_id' => "required|uuid|exists:candidates,candidate_id",
+            'name' => "nullable|string",
+            'class' => "nullable|string"
         ];
     }
 

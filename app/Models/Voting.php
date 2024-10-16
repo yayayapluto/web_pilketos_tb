@@ -14,6 +14,8 @@ class Voting extends Model
         'voting_id',
         'nisn',
         'candidate_id',
+        'name',
+        'class'
     ];
 
     public function candidate()

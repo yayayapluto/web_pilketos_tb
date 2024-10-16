@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
             'created_by' => 'system',
         ]);
         Candidate::factory(3)->create();
-        Voting::factory(100)->create();
+        //Voting::factory(100)->create();
     }
 }

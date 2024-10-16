@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->uuid("voting_id");
             $table->string("nisn");
             $table->uuid('candidate_id')->nullable();
+            $table->string("name")->nullable();
+            $table->string("class")->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->string('created_by')->nullable();
