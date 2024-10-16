@@ -20,8 +20,8 @@ class VotingController extends Controller
         $data = $req->validated();
         $resData = $this->checkNISN((string) $req->input("nisn"));
 
-        if (!$resData["status"]) {
-            return SendRedirect::withMessage("voting", false, $resData["msg"]);
+        if (!$resData["status"] || $resData["data"]["data"] === null) {
+            return SendRedirect::withMessage("voting", false, "Siswa tidak di temukan");
         }
 
         $studentsData = $resData["data"]["data"];
@@ -38,7 +38,7 @@ class VotingController extends Controller
             return SendRedirect::withMessage("voting", false, self::VOTING_FAILED_MESSAGE);
         }
 
-        return SendRedirect::withMessage("landing", true, "Thanks for voting " . $data["name"] ?? "Entitas");
+        return SendRedirect::withMessage("landing", true, "Thanks for voting " . ($data["name"] ?? "Entitas"));
     }
 
     private function checkNISN(string $nisn)
@@ -62,9 +62,9 @@ class VotingController extends Controller
 
         $data = json_decode($response->getBody(), true);
         return [
-            "status" => $data["success"],
-            "data" => $data ?? null,
-            "msg" => $data["msg"] ?? "Error occurred"
+            "status" => $data["success"] ?? false,
+            "data" => $data,
+            "msg" => $data["msg"] ?? "-"
         ];
     } catch (RequestException $e) {
         // Handle error
