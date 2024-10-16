@@ -28,7 +28,7 @@ class storeRequest extends FormRequest
             'image' => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
             'name' => "required|string|max:255",
             'description' => "required|string",
-            'external_link' => "required|string|url",
+            'external_link' => "nullable|string|url",
         ];
     }
 

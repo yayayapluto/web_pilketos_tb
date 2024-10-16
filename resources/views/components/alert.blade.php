@@ -2,20 +2,16 @@
     <script>
         Swal.fire({
             title: 'PERHATIAN',
-            text: "{{ session('easter') }}",
+            text: "{{ session('easter') }}\nJangan jahil yah",
             background: '#f0f8ff',
             color: '#333',
-            confirmButtonColor: '#007BFF',
             showClass: {
                 popup: 'animate__animated animate__zoomIn'
             },
             hideClass: {
                 popup: 'animate__animated animate__fadeOut'
             },
-            customClass: {
-                confirmButton: 'btn-info'
-            },
-            timer: 2000,
+            timer: 5000,
             timerProgressBar: true,
         });
     </script>
@@ -25,8 +21,7 @@
 @if (session('success'))
     <script>
         Swal.fire({
-            icon: 'success',
-            title: 'Success!',
+            title: 'Berhasil!',
             text: "{{ session('success') }}",
             confirmButtonText: 'OK',
             customClass: {
@@ -39,8 +34,7 @@
 @if ($errors->any())
     <script>
         Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+            title: 'Error...',
             text: "{{ implode('\\n', $errors->all()) }}",
             confirmButtonText: 'OK',
             customClass: {

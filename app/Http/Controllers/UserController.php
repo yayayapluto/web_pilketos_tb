@@ -16,7 +16,8 @@ class UserController extends Controller
         }
         
         $voteStatusLabel = ["Sudah", "Belum"];
-        $voteStatusData = [69, 96];
+        $votedCount = Voting::all()->count();
+        $voteStatusData = [$votedCount, 100 - $votedCount];
 
         $candidates = Candidate::withCount('votings')->get(); //voitngs_count
         $candidateVoteLabel = $candidates->pluck('name')->toArray();
