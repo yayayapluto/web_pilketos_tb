@@ -24,7 +24,7 @@ class storeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nisn' => "required|string",
+            'nisn' => "required|string|min_digits:10",
             'candidate_id' => "required|uuid|exists:candidates,candidate_id",
             'name' => "nullable|string",
             'class' => "nullable|string"

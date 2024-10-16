@@ -49,12 +49,14 @@ class UserController extends Controller
             $voteByPeriodData[] = $voteCount;
         }
 
-        $transactionLabel = ["NISN", "Kandidat", "Waktu"];
+        $transactionLabel = ["NISN", "Nama", "Kelas" ,"Kandidat", "Waktu"];
         $transactionData = [];
         $votings = Voting::with('candidate')->get();
         foreach ($votings as $voting) {
             $transactionData[] = [
                 'nisn' => $voting->nisn,
+                'name' => $voting->name ?? "Entitas",
+                'class' => $voting->class ?? "",
                 'candidate' => $voting->candidate->name ?? "[Kandidat Dihapus]",
                 'time' => $voting->created_at->format('Y-m-d H:i:s'),
             ];

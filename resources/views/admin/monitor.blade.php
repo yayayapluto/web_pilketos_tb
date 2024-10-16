@@ -12,6 +12,8 @@
                         <thead>
                             <tr>
                                 <th>NISN</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
                                 <th>Kandidat</th>
                                 <th>Waktu</th>
                             </tr>
@@ -20,6 +22,8 @@
                             @foreach($transactionData as $transaction)
                                 <tr>
                                     <td>{{ $transaction['nisn'] }}</td>
+                                    <td>{{ $transaction['name'] }}</td>
+                                    <td>{{ $transaction['class'] }}</td>
                                     <td>{{ $transaction['candidate'] }}</td>
                                     <td>{{ $transaction['time'] }}</td>
                                 </tr>
