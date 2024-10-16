@@ -9,11 +9,11 @@ html * {
     display: none;
 }
 
-#headercontainer{
+#headercontainer {
     margin-top: 120px;
 }
 
-#headertext{
+#headertext {
     color: white;
     font-size: 35px;
     width: 670px;
@@ -21,7 +21,7 @@ html * {
     font-weight: bold;
 }
 
-.headerbutton{
+.headerbutton {
     color: #0099ff;
     background-color: white;
     border: none;
@@ -111,29 +111,33 @@ html * {
     font-size: 0.9rem;
 }
 
-#headervoting1{
-    color: white;
-}
-#headervoting2{
+#headervoting1 {
     color: white;
 }
 
-#containervoting1:hover{
+#headervoting2 {
+    color: white;
+}
+
+#containervoting1:hover {
     border-left: #005fec;
-    border-bottom:#005fec ;
+    border-bottom: #005fec;
 }
 
 @media screen and (max-width: 1000px) {
-    #headercontainer{
+    #headercontainer {
         margin-top: 50px;
     }
-    #headertext{
+
+    #headertext {
         margin-top: 0px;
     }
-    #imgmpk{
+
+    #imgmpk {
         display: none;
     }
-    #imgosis{
+
+    #imgosis {
         display: none;
     }
-  }
+}

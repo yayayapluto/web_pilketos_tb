@@ -19,8 +19,8 @@
         style="margin-top:0px;background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
 background-size: contain;">
 
-        <div style="display:flex; justify-content:center; align-items:center;margin-top:120px ">
-            <div style="position: absolute; top:0; margin-top:150px">
+        <div style="display:flex; justify-content:center; align-items:center;margin-top:70px ">
+            <div style="position: absolute; top:0; margin-top:130px">
 
                 <a style="font-size: 35px;font-weight:bold;color:white;">Kandidat</a>
 
@@ -29,14 +29,14 @@ background-size: contain;">
 
         <div id="containervoting1" class="container mt-5">
 
-            <div class="row justify-content-center " style="margin-top: 10px; padding-bottom: 10px;">
+            <div class="row justify-content-center " style="margin-top: 130px; padding-bottom: 10px;">
                 @foreach ($candidates as $candidate)
                     <div class="col-md-4" style="height: 500px">
                         <div id="containerkanidat" class="card text-center hover"
                             data-candidate="{{ $candidate->candidate_id }}" onclick="selectCandidate(this)">
                             <div class="card-img-container">
-
-                                <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                                <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px"
+                                    src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
                                     class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">

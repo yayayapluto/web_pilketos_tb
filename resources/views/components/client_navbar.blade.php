@@ -1,9 +1,10 @@
-<nav class="app-header navbar navbar-expand bg-body">
+<nav class="app-header navbar navbar-expand bg-body"
+    style="position: fixed;width:100%; top: 0;box-shadow:10px; z-index:10;">
     <div class="container-fluid">
 
         <div class="col-md-6 text-md-start mb-3 mb-md-0">
             <a class="navbar-brand" href="#">
-                <img src="assets/logoTB/mpk-white-bg.png" alt="Logo2" width="60" height="60"
+                <img src="{{ asset('assets/logoTB/mpk-white-bg.png') }}" alt="Logo2" width="60" height="60"
                     class="d-inline-block align-text-middle">
 
                 <img src="assets/logoTB/IMG_4425.PNG" alt="Logo1" width="60" height="60"

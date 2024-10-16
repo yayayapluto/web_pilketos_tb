@@ -6,7 +6,7 @@
         </div>
         <div>
             <small>
-                Made by: Farras & Affan | in 4 Days
+                Made by: Farras, Affan & Kenneth| in 4 Days
             </small>
         </div>
         <div>
