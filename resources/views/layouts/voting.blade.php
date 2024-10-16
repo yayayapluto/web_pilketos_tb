@@ -21,9 +21,11 @@
             @yield('content')
         </main>
         <footer>
-            @yield('footer')
+            @include('components.client_footer')
         </footer>
     </div>
 </body>
+
+@yield('js')
 
 </html>

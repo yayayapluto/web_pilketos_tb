@@ -5,6 +5,15 @@
 @section('header')
     <x-head />
     <x-client_navbar></x-client_navbar>
+
+
+    <style>
+        #containerkanidat:hover {
+            box-shadow: -12px 13px 0px 0px #0083D4;
+            -webkit-box-shadow: -12px 13px 0px 0px #0083D4;
+            -moz-box-shadow: -12px 13px 0px 0px #0083D4;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -13,19 +22,19 @@
             <div class="top-side">
                 <img id="imgmpk" src="assets/logoTB/mpk-white-bg.png" alt="" width="200" height="200">
 
-               
-                    <a id="headertext">"Suaramu, Aksimu! Jadilah Bagian dari
-                        Perubahan,
-                        Pilih Ketua OSIS
-                        Masa Depan!"</a>
-            
+
+                <a id="headertext">"Suaramu, Aksimu! Jadilah Bagian dari
+                    Perubahan,
+                    Pilih Ketua OSIS
+                    Masa Depan!"</a>
+
 
                 <img id="imgosis" src="assets/logoTB/IMG_4425.PNG" alt="" width="180" height="180">
             </div>
-            <a href="{{route("voting")}}">
+            <a href="{{ route('voting') }}">
                 <button type="button" class="headerbutton">
-                Pilih
-            </button>
+                    Pilih
+                </button>
             </a>
         </div>
     </div>
@@ -39,8 +48,8 @@
         <h1 class="text-center text-dark">Kandidat</h1>
         <div class="row justify-content-center">
             @foreach ($candidates as $candidate)
-                <div class="col-md-4">
-                    <div class="card text-center">
+                <div class="col-md-4" style="height: 500px">
+                    <div class="card text-center" id="containerkanidat">
                         <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
                             class="fixed-img card-img-top" alt="...">
                         <div class="card-body">
@@ -58,7 +67,7 @@
             @endforeach
         </div>
         <div class="text-center m-5">
-            <a class="btn btn-primary" href="{{route("voting")}}" role="button">Pilih</a>
+            <a class="btn btn-primary" href="{{ route('voting') }}" role="button">Pilih</a>
         </div>
     </div>
 @endsection

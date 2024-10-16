@@ -7,10 +7,10 @@
 
             <div class="col-md-6 text-md-end mb-3 mb-md-0 text-white footer-social-icons">
                 <p class="mb-1">Kontak Kami</p>
-                <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
-                <a href="#" target="_blank"><i class="bi bi-tiktok"></i></a>
+                <a href="https://www.instagram.com/pplg.starbhak/" target="_blank"><i class="bi bi-instagram"></i></a>
+                {{-- <a href="#" target="_blank"><i class="bi bi-tiktok"></i></a>
                 <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-youtube"></i></a> --}}
             </div>
         </div>
         <div class="text-center text-white">
