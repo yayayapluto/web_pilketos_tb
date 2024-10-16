@@ -62,9 +62,9 @@ class VotingController extends Controller
 
         $data = json_decode($response->getBody(), true);
         return [
-            "status" => $data["success"],
+            "status" => $data["success"] ?? false,
             "data" => $data,
-            "msg" => $data["msg"]
+            "msg" => $data["msg"] ?? "-"
         ];
     } catch (RequestException $e) {
         // Handle error
