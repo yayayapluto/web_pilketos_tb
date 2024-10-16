@@ -1,3 +1,27 @@
+@if (session('easter'))
+    <script>
+        Swal.fire({
+            title: 'PERHATIAN',
+            text: "{{ session('easter') }}",
+            background: '#f0f8ff',
+            color: '#333',
+            confirmButtonColor: '#007BFF',
+            showClass: {
+                popup: 'animate__animated animate__zoomIn'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOut'
+            },
+            customClass: {
+                confirmButton: 'btn-info'
+            },
+            timer: 2000,
+            timerProgressBar: true,
+        });
+    </script>
+@endif
+
+
 @if (session('success'))
     <script>
         Swal.fire({

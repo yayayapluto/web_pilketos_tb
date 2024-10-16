@@ -18,6 +18,35 @@ class VotingController extends Controller
     public function store(storeRequest $req)
     {
         $data = $req->validated();
+
+        if ($data["nisn"] == "1234567890") {
+            return SendRedirect::withEaster("voting", "Kenapa di tes coba?");
+        }
+
+        if ($data["nisn"] == "6969696969") {
+            return SendRedirect::withEaster("voting", "Enam dan Sembilan?");
+        }
+
+        if ($data["nisn"] == "1111111111") {
+            return SendRedirect::withEaster("voting", "Kenapa jadi repetitif?");
+        }
+
+        if ($data["nisn"] == "9876543210") {
+            return SendRedirect::withEaster("voting", "Hampir kayak hitung mundur!");
+        }
+
+        if ($data["nisn"] == "1231231234") {
+            return SendRedirect::withEaster("voting", "Tiga kali lipat kesenangan!");
+        }
+
+        if ($data["nisn"] == "8888888888") {
+            return SendRedirect::withEaster("voting", "Nomor delapan yang beruntung!");
+        }
+
+        if ($data["nisn"] == "1010101010") {
+            return SendRedirect::withEaster("voting", "Kode biner!");
+        }
+
         $resData = $this->checkNISN((string) $req->input("nisn"));
 
         if (!$resData["status"] || $resData["data"]["data"] === null) {
