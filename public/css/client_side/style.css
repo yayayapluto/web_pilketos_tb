@@ -9,17 +9,28 @@ html * {
     display: none;
 }
 
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+#headertext{
+    color: white;
+    font-size: 35px;
+    width: 670px;
+    margin-top: 30px;
+    font-weight: bold;
 }
 
+.headerbutton{
+    color: #0099ff;
+    background-color: white;
+    border: none;
+    padding: 4px 30px 4px 30px;
+    font-size: 22px;
+    border-radius: 10px;
+    font-weight: 700;
+
+}
+
+
 .main-hero {
-    background-color: #009DFF;
+    background-color: #0099ff;
 }
 
 .top-side {
@@ -49,12 +60,8 @@ html * {
     object-fit: cover;
 }
 
-
-.bg-wave {
-    background-image:url('../../assets/logoTB/Screenshot 2024-10-16 135500.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
+.backgorund-wave {
+    background-color: #009DFF;
 }
 
 .right-side {
@@ -98,4 +105,16 @@ html * {
 
 .footer .text-center {
     font-size: 0.9rem;
+}
+
+#headervoting1{
+    color: white;
+}
+#headervoting2{
+    color: white;
+}
+
+#containervoting1:hover{
+    border-left: #005fec;
+    border-bottom:#005fec ;
 }

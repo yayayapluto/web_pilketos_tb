@@ -3,29 +3,29 @@
 @section('title', 'Welcome')
 
 @section('header')
-    <x-head></x-head>
+    <x-head />
     <x-client_navbar></x-client_navbar>
 @endsection
 
 @section('content')
     <div class="main-hero">
-        <div class="container-fluid text-center text-white" style="margin-top: 200px">
+        <div class="container-fluid text-center text-white" style="margin-top: 120px">
             <div class="top-side">
-                <img src="assets/logoTB/mpk-white-bg.png" alt="" width="150" height="150">
+                <img src="assets/logoTB/mpk-white-bg.png" alt="" width="200" height="200">
 
-                <div class="unselectable">
-                    <h2 class="text-wrap font-weight-bold " style="width: 40rem">"Suaramu, Aksimu! Jadilah Bagian dari
+               
+                    <a id="headertext">"Suaramu, Aksimu! Jadilah Bagian dari
                         Perubahan,
                         Pilih Ketua OSIS
-                        Masa Depan!"</h2>
-                </div>
+                        Masa Depan!"</a>
+            
 
-                <img src="assets/logoTB/IMG_4425.PNG" alt="" width="150" height="150">
+                <img src="assets/logoTB/IMG_4425.PNG" alt="" width="180" height="180">
             </div>
-            <a href="{{ route('voting') }}">
-                <button type="button" class="btn btn-light text-blue">
-                    Pilih
-                </button>
+            <a href="{{route("voting")}}">
+                <button type="button" class="headerbutton">
+                Pilih
+            </button>
             </a>
         </div>
     </div>
@@ -58,7 +58,7 @@
             @endforeach
         </div>
         <div class="text-center m-5">
-            <a class="btn btn-primary" href="{{ route('voting') }}" role="button">Pilih</a>
+            <a class="btn btn-primary" href="{{route("voting")}}" role="button">Pilih</a>
         </div>
     </div>
 @endsection
