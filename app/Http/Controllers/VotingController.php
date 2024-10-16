@@ -20,8 +20,8 @@ class VotingController extends Controller
         $data = $req->validated();
         $resData = $this->checkNISN((string) $req->input("nisn"));
 
-        if ($resData["status"] === false) {
-            return SendRedirect::withMessage("voting", true, self::NISN_NOT_REGISTERED_MESSAGE);
+        if (!$resData["status"]) {
+            return SendRedirect::withMessage("voting", false, $resData["msg"]);
         }
 
         $studentsData = $resData["data"]["data"];
@@ -42,35 +42,37 @@ class VotingController extends Controller
     }
 
     private function checkNISN(string $nisn)
-    {
-        $client = new Client();
-        $url = "https://absensi.smktarunabhakti.net:3995/api/pilketos/check-nisn";
+{
+    $client = new Client();
+    $url = "https://absensi.smktarunabhakti.net:3995/api/pilketos/check-nisn";
 
-        $headers = [
-            "X-Secret" => env("X_SECRET_API_TOKEN"),
-            "Content-Type" => "application/json"
+    $headers = [
+        "X-Secret" => env("X_SECRET_API_TOKEN"),
+        "Content-Type" => "application/json"
+    ];
+
+    $body = json_encode(['nisn' => $nisn]);
+
+    try {
+        $response = $client->post($url, [
+            'headers' => $headers,
+            'body' => $body,
+            'verify' => false // Disable SSL verification
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return [
+            "status" => $data["success"],
+            "data" => $data ?? null,
+            "msg" => $data["msg"] ?? "Error occurred"
         ];
-
-        $body = json_encode(['nisn' => $nisn]);
-
-        try {
-            $response = $client->post($url, [
-                'headers' => $headers,
-                'body' => $body,
-            ]);
-
-            $data = json_decode($response->getBody(), true);
-            return [
-                "status" => true,
-                "data" => $data
-            ];
-
-        } catch (RequestException $e) {
-            \Log::error('NISN check failed: ' . $e->getMessage());
-            return [
-                "status" => false,
-                "data" => null
-            ];
-        }
+    } catch (RequestException $e) {
+        // Handle error
+        return [
+            "status" => false,
+            "message" => $e->getMessage()
+        ];
     }
+}
+
 }
