@@ -49,8 +49,12 @@ html * {
     object-fit: cover;
 }
 
-.backgorund-wave {
-    background-color: #009DFF;
+
+.bg-wave {
+    background-image:url('../../assets/logoTB/Screenshot 2024-10-16 135500.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
 }
 
 .right-side {

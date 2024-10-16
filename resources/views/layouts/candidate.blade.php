@@ -10,8 +10,7 @@
     <x-head></x-head>
 </head>
 
-<body style="background-color: ">
-
+<body>
     <x-alert />
     <div>
         <main>

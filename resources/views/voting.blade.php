@@ -5,45 +5,42 @@
 @section('header')
 
 @section('content')
-    <div class="container-fluid position-relative background-wave"
-        style="background-color: #007bff; padding-bottom: 100px; z-index:-10;">
-    </div>
-    <div class="container">
-        <div class="text-center">
+    <div class="container-fluid"
+        style="background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
+background-size: contain;">
 
+        <div class="text-center">
             <h1>Kandidat</h1>
             <h5>Pilih salah satu kandidat</h5>
         </div>
-    </div>
 
-    <div class="container mt-5">
+        <div class="container mt-5">
 
-        <div class="row justify-content-center">
-            @foreach ($candidates as $candidate)
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <div class="card-img-container">
+            <div class="row justify-content-center">
+                @foreach ($candidates as $candidate)
+                    <div class="col-md-3">
+                        <div class="card text-center">
+                            <div class="card-img-container">
 
-                            <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
-                                class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
-                        </div>
+                                <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                                    class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
+                            </div>
 
-                        <div class="card-footer d-flex">
-                            <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
-                                role="button">
-                                <i class="bi bi-info-circle"></i> Info
-                            </a>
+                            <div class="card-footer d-flex">
+                                <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
+                                    role="button">
+                                    <i class="bi bi-info-circle"></i> Info
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
 
-    <div class="container">
 
         <form action="{{ route('voting.submit') }}" method="POST">
             @csrf
@@ -67,8 +64,8 @@
                 <button class="btn btn-primary" type="submit">Vote</button>
             </div>
         </form>
-    </div>
 
+    </div>
 @endsection
 
 @section('footer')

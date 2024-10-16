@@ -22,10 +22,10 @@
 
                 <img src="assets/logoTB/IMG_4425.PNG" alt="" width="150" height="150">
             </div>
-            <a href="{{route("voting")}}">
+            <a href="{{ route('voting') }}">
                 <button type="button" class="btn btn-light text-blue">
-                Pilih
-            </button>
+                    Pilih
+                </button>
             </a>
         </div>
     </div>
@@ -58,7 +58,7 @@
             @endforeach
         </div>
         <div class="text-center m-5">
-            <a class="btn btn-primary" href="{{route("voting")}}" role="button">Pilih</a>
+            <a class="btn btn-primary" href="{{ route('voting') }}" role="button">Pilih</a>
         </div>
     </div>
 @endsection
