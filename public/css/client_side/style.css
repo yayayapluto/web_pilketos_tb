@@ -32,6 +32,12 @@ html * {
 
 }
 
+.headerbutton:hover{
+    background-color: rgb(240, 240, 240);
+    animation: pulse;
+    animation-duration: 0.2s;
+}
+
 
 .main-hero {
     background-color: #0099ff;
@@ -125,6 +131,9 @@ html * {
 }
 
 @media screen and (max-width: 1000px) {
+    .headerwraping{
+        margin-top: 50px;
+    }
     #headercontainer {
         margin-top: 50px;
     }

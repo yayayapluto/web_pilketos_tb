@@ -5,7 +5,14 @@
 @section('header')
 
     <style>
-        #containerkanidat:hover {
+        .containerkanidat {
+            box-shadow: 0px 0px 0px 0px #0083D4;
+            -webkit-box-shadow: 0px 0px 0px 0px #0083D4;
+            -moz-box-shadow: 0px 0px 0px 0px #0083D4;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .containerkanidat:hover {
             box-shadow: -12px 13px 0px 0px #0083D4;
             -webkit-box-shadow: -12px 13px 0px 0px #0083D4;
             -moz-box-shadow: -12px 13px 0px 0px #0083D4;
@@ -31,26 +38,22 @@ background-size: contain;">
 
             <div class="row justify-content-center " style="margin-top: 130px; padding-bottom: 10px;">
                 @foreach ($candidates as $candidate)
-                    <div class="col-md-4" style="height: 500px">
-                        <div id="containerkanidat" class="card text-center hover"
-                            data-candidate="{{ $candidate->candidate_id }}" onclick="selectCandidate(this)">
-                            <div class="card-img-container">
-                                <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px"
-                                    src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
-                                    class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
-                            </div>
+                <div class="col-md-4" style="height: 500px">
+                    <div class="card text-center containerkanidat">
+                        <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px" src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                            class="fixed-img card-img-top" alt="...">
+                        <div class="card-body">
+                            <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
+                        </div>
 
-                            <div class="card-footer d-flex">
-                                <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
-                                    role="button">
-                                    <i class="bi bi-info-circle"></i> Info
-                                </a>
-                            </div>
+                        <div class="card-footer d-flex">
+                            <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
+                                role="button">
+                                <i class="bi bi-info-circle"></i> Info
+                            </a>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>

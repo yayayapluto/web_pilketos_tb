@@ -8,16 +8,25 @@
 
 
     <style>
-        #containerkanidat:hover {
+
+        .containerkanidat {
+            box-shadow: 0px 0px 0px 0px #0083D4;
+            -webkit-box-shadow: 0px 0px 0px 0px #0083D4;
+            -moz-box-shadow: 0px 0px 0px 0px #0083D4;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .containerkanidat:hover {
             box-shadow: -12px 13px 0px 0px #0083D4;
             -webkit-box-shadow: -12px 13px 0px 0px #0083D4;
             -moz-box-shadow: -12px 13px 0px 0px #0083D4;
+            
         }
     </style>
 @endsection
 
 @section('content')
-    <div class="main-hero">
+    <div class="main-hero headerwraping">
         <div class="container-fluid text-center text-white" id="headercontainer">
             <div class="top-side">
                 <img id="imgmpk" src="assets/logoTB/mpk-white-bg.png" alt="" width="200" height="200">
@@ -49,8 +58,8 @@
         <div class="row justify-content-center">
             @foreach ($candidates as $candidate)
                 <div class="col-md-4" style="height: 500px">
-                    <div class="card text-center" id="containerkanidat">
-                        <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                    <div class="card text-center containerkanidat">
+                        <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px" src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
                             class="fixed-img card-img-top" alt="...">
                         <div class="card-body">
                             <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
