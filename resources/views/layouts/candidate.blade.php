@@ -11,7 +11,6 @@
 
 <body style="background-color: ">
 
-    
     <x-alert />
     <div>
         <main>
