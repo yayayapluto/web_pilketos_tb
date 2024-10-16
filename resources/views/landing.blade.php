@@ -22,9 +22,11 @@
 
                 <img src="assets/logoTB/IMG_4425.PNG" alt="" width="150" height="150">
             </div>
-            <button type="button" class="btn btn-light text-blue">
+            <a href="{{route("voting")}}">
+                <button type="button" class="btn btn-light text-blue">
                 Pilih
             </button>
+            </a>
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -56,7 +58,7 @@
             @endforeach
         </div>
         <div class="text-center m-5">
-            <a class="btn btn-primary" href="#" role="button">Pilih</a>
+            <a class="btn btn-primary" href="{{route("voting")}}" role="button">Pilih</a>
         </div>
     </div>
 @endsection
