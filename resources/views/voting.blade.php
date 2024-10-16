@@ -10,8 +10,7 @@
         <div style="display:flex; justify-content:center; align-items:center">
          <div style="position: absolute; top:0;margin-top:50px">
 
-            <a style="font-size: 30px;">Kandidat</a><br>
-            <a>Pilih salah satu kandidat</a>
+            <a style="font-size: 35px;font-weight:bold;color:white;">Kandidat</a><br>
         </div>    
         </div>
        
