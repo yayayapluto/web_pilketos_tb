@@ -1,4 +1,3 @@
-<!--begin::Header-->
 <nav class="app-header navbar navbar-expand bg-body">
     <div class="container-fluid">
 
@@ -34,4 +33,3 @@
         </div>
     </div>
 </nav>
-<!--end::Header-->

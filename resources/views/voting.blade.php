@@ -3,20 +3,20 @@
 @section('title', 'Welcome')
 
 @section('header')
-    <x-head></x-head>
-    <x-client_navbar></x-client_navbar>
-@endsection
 
 @section('content')
-    <div>
+    <div class="container-fluid position-relative background-wave" style="background-color: #007bff; padding-bottom: 100px; z-index:-10;">
+    </div>
+    <div class="container">
         <form action="{{ route('voting.submit') }}" method="POST">
             @csrf
-            <div>
-                <label for="nisn">NISN:</label>
+            <div class="d-flex flex-row">
+                <label for="nisn">NISN anda:</label>
                 <input type="text" id="nisn" name="nisn" required>
             </div>
             <div>
                 <label for="candidate_id">Pilih Kandidat:</label>
+
                 <select id="candidate_id" name="candidate_id" required>
                     <option value="">-- Pilih Kandidat --</option>
                     @foreach ($candidates as $candidate)
@@ -29,6 +29,11 @@
 
         <hr>
 
+        <div class="text-center">
+
+            <h1>Kandidat</h1>
+            <h5>Pilih salah satu kandidat</h5>
+        </div>
         @foreach ($candidates as $candidate)
             <div class="col-md-4">
                 <div class="card text-center">
@@ -48,6 +53,7 @@
             </div>
         @endforeach
     </div>
+
 @endsection
 
 @section('footer')

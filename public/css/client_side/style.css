@@ -40,6 +40,23 @@ html * {
     width: 300px;
 }
 
+.backgorund-wave {
+    background-color: #009DFF;
+}
+
+.right-side{
+    margin-right: 50px;
+}
+
+.left-side {
+    background-color: white;
+}
+
+.vl {
+    border-left: 6px solid rgb(136, 136, 136);
+    height: 500px;
+}
+
 .footer {
     background-color: #343a40;
     color: white;
