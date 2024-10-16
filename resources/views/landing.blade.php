@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="main-hero">
-        <div class="container-fluid text-center text-white" style="margin-top: 120px">
+        <div class="container-fluid text-center text-white" id="headercontainer">
             <div class="top-side">
                 <img id="imgmpk" src="assets/logoTB/mpk-white-bg.png" alt="" width="200" height="200">
 

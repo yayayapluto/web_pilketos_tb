@@ -9,6 +9,10 @@ html * {
     display: none;
 }
 
+#headercontainer{
+    margin-top: 120px;
+}
+
 #headertext{
     color: white;
     font-size: 35px;
@@ -120,6 +124,12 @@ html * {
 }
 
 @media screen and (max-width: 1000px) {
+    #headercontainer{
+        margin-top: 50px;
+    }
+    #headertext{
+        margin-top: 0px;
+    }
     #imgmpk{
         display: none;
     }
