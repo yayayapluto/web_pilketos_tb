@@ -20,7 +20,7 @@ class VotingController extends Controller
         $data = $req->validated();
         $resData = $this->checkNISN((string) $req->input("nisn"));
 
-        if (!$resData["status"]) {
+        if ($resData["status"] === false) {
             return SendRedirect::withMessage("voting", true, self::NISN_NOT_REGISTERED_MESSAGE);
         }
 
