@@ -7,7 +7,9 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid" style="background-color: #007bff; padding-bottom: 50px; position: relative;">
+    <div class="container-fluid"
+        style="background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
+background-size: contain;">
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-1">
@@ -34,12 +36,7 @@
             </div>
         </div>
 
-        <div class="wave" style="position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;">
-            <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100px; width: 100%;">
-                <path d="M0.00,49.98 C150.00,150.00 349.70,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-                    style="stroke: none; fill: #fff;"></path>
-            </svg>
-        </div>
+
     </div>
 @endsection
 
