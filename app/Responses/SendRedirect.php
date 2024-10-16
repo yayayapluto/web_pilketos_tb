@@ -22,4 +22,8 @@ class SendRedirect
             return Redirect::route($route)->withErrors($message ?? "errors occured");
         }
     }
+
+    public static function withEaster(string $route, $message) {
+        return Redirect::route($route)->with("easter", $message ?? "Booo.");
+    }
 }
