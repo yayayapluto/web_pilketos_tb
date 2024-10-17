@@ -80,25 +80,14 @@ background-size: contain;">
 
         <div class="container" style="margin-top:50px">
 
-            <form action="{{ route('voting.submit') }}" method="POST">
+            <form action="#" method="#">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label" for="nisn">NISN anda:</label>
                     <input class="form-control" type="text" id="nisn" name="nisn" required>
                 </div>
-                <div>
-                    <label class="form-label" for="candidate_id">Pilih Kandidat:</label>
-
-                    <select class="form-select" id="candidate_id" name="candidate_id" required>
-                        <option value="">-- Pilih Kandidat --</option>
-                        @foreach ($candidates as $candidate)
-                            <option value="{{ $candidate->candidate_id }}">{{ $candidate->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
+                <input type="hidden" id="selectedCandidateId" name="candidate_id" value="">
                 <div class="text-center my-5">
-
                     <button class="btn btn-primary" type="submit">Vote</button>
                 </div>
             </form>
@@ -109,34 +98,44 @@ background-size: contain;">
 
 
 @section('js')
-
-
     <script>
-        let selectedCandidateId = null;
+    let selectedCandidateId = null;
 
-        function selectCandidate(obj) {
+    function selectCandidate(obj) {
+        let candidate = obj.getAttribute("data-candidate");   
 
-            let candidate = obj.getAttribute("data-candidate")
-
-            if (candidate == selectedCandidateId) {
-                selectedCandidateId = null;
-                obj.classList.remove('selected')
-
-                return;
-            }
-
-            var elem = document.getElementsByClassName('selected')[0]
-
-            if (elem) {
-                elem.classList.remove('selected')
-            }
-
-            selectedCandidateId = candidate
-
-            obj.classList.add('selected')
-
+        if (candidate == selectedCandidateId) {
+            selectedCandidateId = null;
+            obj.classList.remove('selected');
+            document.getElementById('selectedCandidateId').value = '';
+            return;
         }
-    </script>
 
+        var elem = document.getElementsByClassName('selected')[0];
+        if (elem) {
+            elem.classList.remove('selected');
+        }
 
+        selectedCandidateId = candidate;
+        obj.classList.add('selected');
+        document.getElementById('selectedCandidateId').value = candidate;
+    }
+
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            const nisn = $('#nisn').val();
+            const candidateId = $('#selectedCandidateId').val();
+
+            $.ajax({
+                url: '{{ route('voting.submit') }}',
+                type: 'POST',
+                data: {
+                    _token: $('input[name="_token"]').val(),
+                    nisn: nisn,
+                    candidate_id: candidateId
+                },
+            });
+        });
+    });
+</script>
 @endsection

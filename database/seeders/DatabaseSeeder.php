@@ -8,6 +8,7 @@ use App\Models\Voting;
 use Illuminate\Database\Seeder;
 use illuminate\Support\Facades\Hash;
 use Illuminate\Support\Stringable;
+use Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+
+        User::truncate();
+        Candidate::truncate();
+        Voting::truncate();
+
         User::create([
             'user_id' => (string) \Str::uuid(),
             'username' => 'admin',
@@ -24,5 +31,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Candidate::factory(3)->create();
         //Voting::factory(100)->create();
+
+        Schema::enableForeignKeyConstraints();
     }
 }
