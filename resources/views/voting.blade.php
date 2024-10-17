@@ -30,13 +30,18 @@
             -webkit-box-shadow: -12px 13px 0px 0px #00c724ca;
             -moz-box-shadow: -12px 13px 0px 0px #00c724ca;
         }
+        @media screen and (max-width: 1000px){
+            #headertextvoting{
+                margin-top: 90px;
+            }
+        }
     </style>
 
 @endsection
 
 @section('content')
     <div class="container-fluid"
-        style="margin-top:0px;background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
+        style="margin-top:40px;background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
 background-size: contain;">
 
         <div style="display:flex; justify-content:center; align-items:center;margin-top:70px ">
