@@ -4,6 +4,7 @@
 
 @section('header')
 
+    <script script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <style>
         .containerkanidat {
             box-shadow: 0px 0px 0px 0px #0083D4;
@@ -128,7 +129,7 @@ background-size: contain;">
             selectedCandidateId = candidate
 
             obj.classList.add('selected')
-            
+
         }
     </script>
 
