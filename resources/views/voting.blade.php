@@ -30,11 +30,12 @@
             -webkit-box-shadow: -12px 13px 0px 0px #00c724ca;
             -moz-box-shadow: -12px 13px 0px 0px #00c724ca;
         }
-        @media screen and (max-width: 1000px){
+        @media screen and (max-width: 600px){
             #headertextvoting{
                 margin-top: 90px;
             }
         }
+        
     </style>
 
 @endsection
@@ -45,7 +46,7 @@
 background-size: contain;">
 
         <div style="display:flex; justify-content:center; align-items:center;margin-top:70px ">
-            <div style="position: absolute; top:0; margin-top:130px">
+            <div style="position: absolute; top:0; margin-top:100px">
 
                 <a style="font-size: 35px;font-weight:bold;color:white;">Kandidat</a>
 
