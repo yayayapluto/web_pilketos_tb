@@ -30,7 +30,7 @@
             -webkit-box-shadow: -12px 13px 0px 0px #00c724ca;
             -moz-box-shadow: -12px 13px 0px 0px #00c724ca;
         }
-        @media screen and (max-width: 600px){
+        @media screen and (max-width: 1000px){
             #headertextvoting{
                 margin-top: 90px;
             }
@@ -100,44 +100,49 @@ background-size: contain;">
 
 @section('js')
     <script>
-    let selectedCandidateId = null;
+        let selectedCandidateId = null;
 
-    function selectCandidate(obj) {
-        let candidate = obj.getAttribute("data-candidate");   
+        function selectCandidate(obj) {
+            let candidate = obj.getAttribute("data-candidate");
 
-        if (candidate == selectedCandidateId) {
-            selectedCandidateId = null;
-            obj.classList.remove('selected');
-            document.getElementById('selectedCandidateId').value = '';
-            return;
+            if (candidate == selectedCandidateId) {
+                selectedCandidateId = null;
+                obj.classList.remove('selected');
+                document.getElementById('selectedCandidateId').value = '';
+                return;
+            }
+
+            var elem = document.getElementsByClassName('selected')[0];
+            if (elem) {
+                elem.classList.remove('selected');
+            }
+
+            selectedCandidateId = candidate;
+            obj.classList.add('selected');
+            document.getElementById('selectedCandidateId').value = candidate;
         }
 
-        var elem = document.getElementsByClassName('selected')[0];
-        if (elem) {
-            elem.classList.remove('selected');
-        }
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                const candidateId = $('#selectedCandidateId').val();
+                const nisn = $('#nisn').val();
 
-        selectedCandidateId = candidate;
-        obj.classList.add('selected');
-        document.getElementById('selectedCandidateId').value = candidate;
-    }
+                if (!candidateId) {
+                    return false; 
+                }
 
-    $(document).ready(function() {
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-            const nisn = $('#nisn').val();
-            const candidateId = $('#selectedCandidateId').val();
+                const formData = new FormData(this);
 
-            $.ajax({
-                url: '{{ route('voting.submit') }}',
-                type: 'POST',
-                data: {
-                    _token: $('input[name="_token"]').val(),
-                    nisn: nisn,
-                    candidate_id: candidateId
-                },
+                $.ajax({
+                    url: '{{ route('voting.submit') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                });
+
+                return true;
             });
         });
-    });
-</script>
+    </script>
 @endsection
