@@ -123,6 +123,7 @@ background-size: contain;">
 
     $(document).ready(function() {
         $('form').on('submit', function(e) {
+            e.preventDefault();
             const nisn = $('#nisn').val();
             const candidateId = $('#selectedCandidateId').val();
 
