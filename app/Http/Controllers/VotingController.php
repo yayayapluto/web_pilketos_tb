@@ -96,7 +96,6 @@ class VotingController extends Controller
             "msg" => $data["msg"] ?? "-"
         ];
     } catch (RequestException $e) {
-        // Handle error
         return [
             "status" => false,
             "message" => $e->getMessage()

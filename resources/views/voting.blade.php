@@ -128,7 +128,7 @@ background-size: contain;">
                 const nisn = $('#nisn').val();
 
                 if (!candidateId) {
-                    return false; 
+                    return false;
                 }
 
                 const formData = new FormData(this);
@@ -139,7 +139,14 @@ background-size: contain;">
                     data: formData,
                     processData: false,
                     contentType: false,
+                    success: function() {
+                        location.href = '{{ route('landing') }}';
+                    },
+                    error: function() {
+                        location.href = '{{ route('landing') }}';
+                    }
                 });
+
 
                 return true;
             });
