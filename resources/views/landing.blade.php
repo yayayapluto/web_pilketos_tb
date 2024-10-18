@@ -41,7 +41,7 @@
                 <img id="imgosis" src="assets/logoTB/IMG_4425.PNG" alt="" width="180" height="180">
             </div>
             <a href="{{ route('voting') }}">
-                <button type="button" class="headerbutton">
+                <button style="margin-top: 20px" type="button" class="headerbutton">
                     Pilih
                 </button>
             </a>
