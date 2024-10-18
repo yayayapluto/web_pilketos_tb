@@ -44,14 +44,14 @@
 
 @section('content')
 
-    <form action="#" method="#">
+    <form>
         @csrf
         <div style="background-color:#0099FF;height:250px; width:100%;">
             <div style="margin-top: 140px; width:65%;margin-left:18%">
                 <div style="width: 100%; text-align:center;">
                     <label style="color: white;" for="nisn" class="nisnlabel">NISN anda:</label><br>
                 </div>
-                
+
                 <input style="width:100%; border:none; height:35px;border-radius:8px;padding:10px;" type="number"
                     id="nisn" name="nisn" required>
             </div>
@@ -94,7 +94,7 @@ background-size: contain;">
                 </div>
             </div>
 
-            <div class="container" style="margin-top:50px">
+            <div class="container" style="margin-top:50px" >
 
 
                 <input type="hidden" id="selectedCandidateId" name="candidate_id" value="">
@@ -133,7 +133,8 @@ background-size: contain;">
         }
 
         $(document).ready(function() {
-            $('form').on('submit', function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault();
                 const candidateId = $('#selectedCandidateId').val();
                 const nisn = $('#nisn').val();
 
@@ -149,11 +150,51 @@ background-size: contain;">
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success: function() {
-                        location.href = '{{ route('landing') }}';
+                    success: function(res) {
+                        if (!res.easter) {
+                            Swal.fire({
+                                icon: (res.success ?
+                                    "success" :
+                                    "error"
+                                    ),
+                                title: (res.success ? 'Berhasil!' : 'Gagal!'),
+                                text: res.msg,
+                                confirmButtonText: 'OK',
+                                customClass: {
+                                    confirmButton: 'btn-' + (res.success ? 'success' :
+                                        'error')
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "warning",
+                                title: 'Perhatian!',
+                                text: res.msg,
+                                background: '#f0f8ff',
+                                color: '#333',
+                                showClass: {
+                                    popup: 'animate__animated animate__zoomIn'
+                                },
+                                hideClass: {
+                                    popup: 'animate__animated animate__fadeOut'
+                                },
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showCancelButton: false, // There won't be any cancel button
+                                showConfirmButton: false, // There won't be any confirm button
+                                allowOutsideClick: false
+                            });
+                        }
                     },
                     error: function() {
-                        location.href = '{{ route('landing') }}';
+                        Swal.fire({
+                            title: 'Error!',
+                            text: "Error tidak diketahui muncul...",
+                            confirmButtonText: 'OK',
+                            customClass: {
+                                confirmButton: 'btn-error'
+                            }
+                        });
                     }
                 });
 

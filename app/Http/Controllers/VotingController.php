@@ -11,52 +11,52 @@ use Illuminate\Http\Request;
 
 class VotingController extends Controller
 {
-    const NISN_NOT_REGISTERED_MESSAGE = "NISN not registered";
-    const NISN_ALREADY_VOTED_MESSAGE = "NISN already voted";
-    const VOTING_FAILED_MESSAGE = "Voting failed, please try again later";
+    const NISN_NOT_REGISTERED_MESSAGE = "NISN tidak terdaftar nih di database";
+    const NISN_ALREADY_VOTED_MESSAGE = "Cuma boleh vote sekali yhh";
+    const VOTING_FAILED_MESSAGE = "Votingnya gagalll, coba lagiii";
 
     public function store(storeRequest $req)
     {
         $data = $req->validated();
 
         if ($data["nisn"] == "1234567890") {
-            return SendRedirect::withEaster("voting", "Kenapa di tes coba?");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "6969696969") {
-            return SendRedirect::withEaster("voting", "Enam dan Sembilan?");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "1111111111") {
-            return SendRedirect::withEaster("voting", "Kenapa jadi repetitif?");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "9876543210") {
-            return SendRedirect::withEaster("voting", "Hampir kayak hitung mundur!");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "1231231234") {
-            return SendRedirect::withEaster("voting", "Tiga kali lipat kesenangan!");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "8888888888") {
-            return SendRedirect::withEaster("voting", "Nomor delapan yang beruntung!");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         if ($data["nisn"] == "1010101010") {
-            return SendRedirect::withEaster("voting", "Kode biner!");
+            return SendRedirect::withJson("voting", true, "Jahil yah kamuu  ///>_<///", true);
         }
 
         $resData = $this->checkNISN((string) $req->input("nisn"));
 
         if (!$resData["status"] || $resData["data"]["data"] === null) {
-            return SendRedirect::withMessage("voting", false, "Siswa tidak di temukan");
+            return SendRedirect::withJson("voting", false, self::NISN_NOT_REGISTERED_MESSAGE);
         }
 
         $studentsData = $resData["data"]["data"];
 
         if (Voting::where("nisn", $data["nisn"])->exists()) {
-            return SendRedirect::withMessage("voting", false, self::NISN_ALREADY_VOTED_MESSAGE);
+            return SendRedirect::withJson("voting", false, self::NISN_ALREADY_VOTED_MESSAGE);
         }
 
         $data["voting_id"] = (string) \Str::uuid();
@@ -64,10 +64,10 @@ class VotingController extends Controller
         $data["class"] = $studentsData["id_kelas"] ?? null;
 
         if (!Voting::create($data)) {
-            return SendRedirect::withMessage("voting", false, self::VOTING_FAILED_MESSAGE);
+            return SendRedirect::withJson("voting", false, self::VOTING_FAILED_MESSAGE);
         }
 
-        return SendRedirect::withMessage("landing", true, "Thanks for voting " . ($data["name"] ?? "Entitas"));
+        return SendRedirect::withJson("landing", true, "Makasih udah voting, " . ($data["name"] ?? "Entitas"));
     }
 
     private function checkNISN(string $nisn)

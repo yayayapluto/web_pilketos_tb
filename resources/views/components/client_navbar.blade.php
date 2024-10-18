@@ -28,13 +28,12 @@
     <div class="container-fluid">
 
         <div class="col-md-6 text-md-start mb-3 mb-md-0">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#" target="_blank">
                 <img src="{{ asset('assets/logoTB/mpk-white-bg.png') }}" alt="Logo2" width="60" height="60"
                     class="d-inline-block align-text-middle">
 
                 <img src="{{ asset('assets/logoTB/IMG_4425.PNG') }}" alt="Logo1" width="60" height="60"
                     class="d-inline-block align-text-middle" id="logoosis">
-
             </a>
         </div>
 
@@ -55,5 +54,6 @@
                 </li>
             </ul>
         </div>
+        
     </div>
 </nav>

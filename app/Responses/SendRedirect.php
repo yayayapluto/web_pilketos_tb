@@ -26,4 +26,13 @@ class SendRedirect
     public static function withEaster(string $route, $message) {
         return Redirect::route($route)->with("easter", $message ?? "Booo.");
     }
+
+    public static function withJson(string $route = "landing", $success = true, $message = null, $easter = false) {
+        return response()->json([
+            "success" => $success,
+            "msg" => $message ?? "Berhasil!",
+            "route" => $route,
+            "easter" => $easter
+        ]);
+    }
 }
