@@ -41,12 +41,24 @@
 @endsection
 
 @section('content')
+
+<form action="#" method="#">
+    @csrf
+<div style="background-color:#0099FF;height:250px; width:100%;">
+    <div style="margin-top: 140px; width:65%;margin-left:18%">
+        <div style="width: 100%; text-align:center;">
+            <label style="color: white;" for="nisn" class="nisnlabel">NISN anda:</label><br>    
+        </div>
+        
+        <input style="width:100%; border:none; height:35px;border-radius:8px;padding:10px;" type="number" id="nisn" name="nisn" required>
+    </div>
+</div>
     <div class="container-fluid"
-        style="margin-top:40px;background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
+        style="margin-top:0px;background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
 background-size: contain;">
 
         <div style="display:flex; justify-content:center; align-items:center;margin-top:70px ">
-            <div style="position: absolute; top:0; margin-top:100px">
+            <div style="position: absolute; top:0; margin-top:300px">
 
                 <a style="font-size: 35px;font-weight:bold;color:white;">Kandidat</a>
 
@@ -81,20 +93,15 @@ background-size: contain;">
 
         <div class="container" style="margin-top:50px">
 
-            <form action="#" method="#">
-                @csrf
-                <div class="mb-3">
-                    <label class="form-label" for="nisn">NISN anda:</label>
-                    <input class="form-control" type="text" id="nisn" name="nisn" required>
-                </div>
+            
                 <input type="hidden" id="selectedCandidateId" name="candidate_id" value="">
                 <div class="text-center my-5">
                     <button class="btn btn-primary" type="submit">Vote</button>
                 </div>
-            </form>
+            
         </div>
     </div>
-
+</form>
 @endsection
 
 
