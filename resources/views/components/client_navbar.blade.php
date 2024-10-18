@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('voting') }}" style="text-decoration:none;">
+                    <a href="#" style="text-decoration:none;">
                         <h5 class="navtxt">
                             Kandidat
                         </h5>

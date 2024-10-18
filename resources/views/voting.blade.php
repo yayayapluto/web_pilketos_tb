@@ -51,7 +51,7 @@
                 <div style="width: 100%; text-align:center;">
                     <label style="color: white;" for="nisn" class="nisnlabel">NISN anda:</label><br>
                 </div>
-
+                
                 <input style="width:100%; border:none; height:35px;border-radius:8px;padding:10px;" type="number"
                     id="nisn" name="nisn" required>
             </div>
