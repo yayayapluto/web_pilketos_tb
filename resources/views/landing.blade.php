@@ -8,7 +8,6 @@
 
 
     <style>
-
         .containerkanidat {
             box-shadow: 0px 0px 0px 0px #0083D4;
             -webkit-box-shadow: 0px 0px 0px 0px #0083D4;
@@ -20,7 +19,7 @@
             box-shadow: -12px 13px 0px 0px #0083D4;
             -webkit-box-shadow: -12px 13px 0px 0px #0083D4;
             -moz-box-shadow: -12px 13px 0px 0px #0083D4;
-            
+            cursor: pointer;
         }
     </style>
 @endsection
@@ -59,7 +58,8 @@
             @foreach ($candidates as $candidate)
                 <div class="col-md-4" style="height: 500px">
                     <div class="card text-center containerkanidat">
-                        <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px" src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
+                        <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px"
+                            src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
                             class="fixed-img card-img-top" alt="...">
                         <div class="card-body">
                             <h2 class="card-title mb-5">{{ $candidate->name }}</h2>

@@ -1,23 +1,26 @@
 <style>
-    .navtxt{
+    .navtxt {
         color: gray;
         text-decoration: none;
         margin-right: 30px;
     }
-    .navtxt:hover{
+
+    .navtxt:hover {
         color: #009DFF;
     }
-    @media screen and (max-width: 600px){
-           .navtxt{
+
+    @media screen and (max-width: 600px) {
+        .navtxt {
             font-size: 16px;
             width: 100px;
             margin-right: 0px
-           }
-           #logoosis{
+        }
+
+        #logoosis {
             width: 52px;
             height: 52px;
-           }
         }
+    }
 </style>
 
 <nav id="navbar" class="app-header navbar navbar-expand bg-body"
@@ -29,7 +32,7 @@
                 <img src="{{ asset('assets/logoTB/mpk-white-bg.png') }}" alt="Logo2" width="60" height="60"
                     class="d-inline-block align-text-middle">
 
-                <img src="assets/logoTB/IMG_4425.PNG" alt="Logo1" width="60" height="60"
+                <img src="{{ asset('assets/logoTB/IMG_4425.PNG') }}" alt="Logo1" width="60" height="60"
                     class="d-inline-block align-text-middle" id="logoosis">
 
             </a>
@@ -45,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" style="text-decoration:none;">
+                    <a href="{{ route('voting') }}" style="text-decoration:none;">
                         <h5 class="navtxt">
                             Kandidat
                         </h5>
