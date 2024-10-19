@@ -3,6 +3,7 @@
 @section('title', 'Welcome')
 
 @section('header')
+<x-client_navbar></x-client_navbar>
 
     <script script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <style>

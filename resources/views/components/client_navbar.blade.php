@@ -28,7 +28,7 @@
     <div class="container-fluid">
 
         <div class="col-md-6 text-md-start mb-3 mb-md-0">
-            <a class="navbar-brand" href="#" target="_blank">
+            <a class="navbar-brand" href="www.smktarunabhakti.net" target="_blank">
                 <img src="{{ asset('assets/logoTB/mpk-white-bg.png') }}" alt="Logo2" width="60" height="60"
                     class="d-inline-block align-text-middle">
 
@@ -40,17 +40,18 @@
         <div class="col-md-6 text-md-end mb-3 mb-md-0">
             <ul class="justify-content-end d-flex">
                 <li>
-                    <a href="#" style="text-decoration: none;">
+                    <a href="{{ route("landing") }}" style="text-decoration: none;">
                         <h5 class="navtxt">
                             Home
                         </h5>
                     </a>
                 </li>
                 <li>
-                    <a href="#" style="text-decoration:none;">
+                    <a href="{{ route("voting") }}" style="text-decoration:none;">
                         <h5 class="navtxt">
                             Kandidat
                         </h5>
+                    </a>
                 </li>
             </ul>
         </div>

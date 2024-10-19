@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    @include("components.client_navbar")
     <x-alert />
     <div>
         <header>
