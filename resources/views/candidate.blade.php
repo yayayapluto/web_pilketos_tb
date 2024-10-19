@@ -18,7 +18,7 @@
 background-size: contain;">
         <div class="container">
             <div class="back-button">
-                <div style="padding-top:50px;">
+                <div style="padding-top:20px;">
                     <a href="{{ URL::previous() }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white"
                             class="bi bi-x-circle" viewBox="0 0 16 16">
