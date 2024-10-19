@@ -11,6 +11,12 @@
         svg:hover {
             fill: rgb(222, 222, 222);
         }
+
+        @media only screen and (max-width: 700px) {
+            #buttonback{
+                padding-bottom: 50px;
+            }
+        }
     </style>
 
     <div class="container-fluid"
@@ -18,7 +24,7 @@
 background-size: contain;">
         <div class="container">
             <div class="back-button">
-                <div style="padding-top:30px;">
+                <div style="padding-top:30px;"id="buttonback">
                     <a href="{{ URL::previous() }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white"
                             class="bi bi-x-circle" viewBox="0 0 16 16">
@@ -42,7 +48,7 @@ background-size: contain;">
 
                 <div class="col-md-7">
                     <h3 class="text-primary"><strong>{{ $candidate->name }}</strong></h3>
-                    <p style="font-size: 24px">{{ $candidate->description }}</p>
+                    <p style="font-size: 20px">{{ $candidate->description }}</p>
 
                     <p class="text-muted">Sosial Kandidat</p>
                     <a href="{{ $candidate->external_link }}"><i class="bi bi-instagram" style="font-size: 24px;"></i></a>

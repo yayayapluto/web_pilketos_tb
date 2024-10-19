@@ -20,11 +20,14 @@
             width: 52px;
             height: 52px;
         }
+        .navlist{
+            margin-top: 20px;
+        }
     }
 </style>
 
 <nav id="navbar" class="app-header navbar navbar-expand bg-body"
-    style="position: fixed;width:100%; top: 0;box-shadow:10px; z-index:10;">
+    style="position: fixed;width:100%; top: 0;box-shadow:10px; z-index:10; height:80px">
     <div class="container-fluid">
 
         <div class="col-md-6 text-md-start mb-3 mb-md-0">
@@ -38,7 +41,7 @@
         </div>
 
         <div class="col-md-6 text-md-end mb-3 mb-md-0">
-            <ul class="justify-content-end d-flex">
+            <ul class="justify-content-end d-flex navlist">
                 <li>
                     <a href="{{ route("landing") }}" style="text-decoration: none;">
                         <h5 class="navtxt">
