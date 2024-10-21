@@ -51,7 +51,7 @@ background-size: contain; padding-bottom:100px;">
 
                 <div class="col-md-7">
                     <h3 class="text-primary"><strong>{{ $candidate->name }}</strong></h3>
-                    <p style="font-size: 15px">{!! nl2br(e($candidate->description)) !!}</p>
+                    <span style="font-size: 15px">{!! $candidate->description !!}</span>
 
                     <p class="text-muted">Sosial Kandidat</p>
                     <a href="{{ $candidate->external_link }}"><i class="bi bi-instagram" style="font-size: 24px;"></i></a>

@@ -15,7 +15,7 @@
                     <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}" class="img-fluid" style="max-width: 200px;">
                 </div>
                 <h2 class="text-center">{{ $candidate->name }}</h2>
-                <p>{{ $candidate->description }}</p>
+                <span>{!! $candidate->description !!}</span>
                 <p>External Link: <a href="{{ $candidate->external_link }}" target="_blank">{{ $candidate->external_link }}</a></p>
             </div>
             <div class="card-footer">

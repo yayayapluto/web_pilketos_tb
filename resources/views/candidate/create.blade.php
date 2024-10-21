@@ -1,17 +1,20 @@
-@extends("layouts.candidate.create")
+@extends('layouts.candidate.create')
 
-@section("content")
+@section("header")
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+@endsection
+
+@section('content')
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Create New Candidate</h3>
+                        <h3 class="card-title">Tambah kandidat baru</h3>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method("POST")
 
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
@@ -25,7 +28,7 @@
 
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea name="description" id="description" class="form-control" required></textarea>
+                                <textarea name="description" id="description" class="form-control" formnovalidate></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -40,4 +43,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+    ClassicEditor
+    .create( document.querySelector( '#description' ) )
+    .catch( error => {
+    console.error( error );
+    });
+</script>
 @endsection
