@@ -12,7 +12,7 @@
             fill: rgb(222, 222, 222);
         }
 
-        @media only screen and (max-width: 400px) {
+        @media only screen and (max-width: 300px) {
             #buttonback{
                 padding-bottom: 100px;
             }
@@ -23,8 +23,8 @@
     </style>
 
     <div
-        style="background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
-background-size: contain; padding-bottom:100px;">
+        style="background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat:repeat-x;
+background-size: contain; padding-bottom:16%;">
         <div class="container">
             <div class="back-button">
                 <div style="padding-top:30px;"id="buttonback">
@@ -41,7 +41,7 @@ background-size: contain; padding-bottom:100px;">
         </div>
 
         <div id="candidatecontainer" class="container d-flex justify-content-center" style="margin-top:100px">
-            <div class="row bg-white shadow-lg rounded p-4" style="max-width: 1100px;">
+            <div class="row bg-white shadow-lg rounded p-4" style="width: 1100px; min-width:350px;">
                 <div class="col-md-5 text-center">
                     <img style="height:300px;width:300px;object-fit:cover;"
                         src="{{ asset('storage/' . $candidate->image) }}" class="rounded img-fluid mb-3"
@@ -50,8 +50,8 @@ background-size: contain; padding-bottom:100px;">
                 </div>
 
                 <div class="col-md-7">
-                    <h3 class="text-primary"><strong>{{ $candidate->name }}</strong></h3>
-                    <span style="font-size: 15px">{!! $candidate->description !!}</span>
+                    <h3 class="text-primary" style=""><strong>{{ $candidate->name }}</strong></h3>
+                    <span style="font-size: 15px">{!! nl2br(e($candidate->description)) !!}</span>
 
                     <p class="text-muted">Sosial Kandidat</p>
                     <a href="{{ $candidate->external_link }}"><i class="bi bi-instagram" style="font-size: 24px;"></i></a>

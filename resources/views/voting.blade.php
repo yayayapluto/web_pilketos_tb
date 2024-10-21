@@ -73,8 +73,8 @@ background-size: contain;">
 
                 <div class="row justify-content-center " style="margin-top: 50px; padding-bottom: 10px;">
                     @foreach ($candidates as $candidate)
-                        <div class="col-md-4" style="height: 600px">
-                            <div class="card text-center containerkanidat" data-candidate="{{ $candidate->candidate_id }}"
+                        <div class="col-md-4" style="height: 630px">
+                            <div class="card text-center containerkanidat" style="height: 560px;" data-candidate="{{ $candidate->candidate_id }}"
                                 onclick="selectCandidate(this)">
                                 <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px"
                                     src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
