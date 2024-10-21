@@ -12,16 +12,19 @@
             fill: rgb(222, 222, 222);
         }
 
-        @media only screen and (max-width: 700px) {
+        @media only screen and (max-width: 400px) {
             #buttonback{
-                padding-bottom: 50px;
+                padding-bottom: 100px;
+            }
+            #candidatecontainer{
+                margin-top: 0px;
             }
         }
     </style>
 
-    <div class="container-fluid"
+    <div
         style="background-image: url('../../assets/logoTB/Screenshot 2024-10-16 135500.png'); padding-bottom: 50px; background-repeat: no-repeat;
-background-size: contain;">
+background-size: contain; padding-bottom:100px;">
         <div class="container">
             <div class="back-button">
                 <div style="padding-top:30px;"id="buttonback">
@@ -37,7 +40,7 @@ background-size: contain;">
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div id="candidatecontainer" class="container d-flex justify-content-center" style="margin-top:100px">
             <div class="row bg-white shadow-lg rounded p-4" style="max-width: 1100px;">
                 <div class="col-md-5 text-center">
                     <img style="height:300px;width:300px;object-fit:cover;"
@@ -48,7 +51,7 @@ background-size: contain;">
 
                 <div class="col-md-7">
                     <h3 class="text-primary"><strong>{{ $candidate->name }}</strong></h3>
-                    <p style="font-size: 20px">{{ $candidate->description }}</p>
+                    <p style="font-size: 15px">{!! nl2br(e($candidate->description)) !!}</p>
 
                     <p class="text-muted">Sosial Kandidat</p>
                     <a href="{{ $candidate->external_link }}"><i class="bi bi-instagram" style="font-size: 24px;"></i></a>
@@ -61,5 +64,8 @@ background-size: contain;">
 @endsection
 
 @section('footer')
+<div id="footercanpage">
     <x-client_footer></x-client_footer>
+</div>
+    
 @endsection

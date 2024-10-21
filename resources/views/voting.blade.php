@@ -50,7 +50,7 @@
         <div style="background-color:#0099FF;height:250px; width:100%;">
             <div style="margin-top: 140px; width:65%;margin-left:18%">
                 <div style="width: 100%; text-align:center;">
-                    <label style="color: white;" for="nisn" class="nisnlabel">NISN anda:</label><br>
+                    <label style="font-size: 35px;font-weight:bold;color:white;" for="nisn" class="nisnlabel">NISN anda:</label><br>
                 </div>
 
                 <input style="width:100%; border:none; height:35px;border-radius:8px;padding:10px;" type="number"
@@ -71,9 +71,9 @@ background-size: contain;">
 
             <div id="containervoting1" class="container mt-5">
 
-                <div class="row justify-content-center " style="margin-top: 130px; padding-bottom: 10px;">
+                <div class="row justify-content-center " style="margin-top: 50px; padding-bottom: 10px;">
                     @foreach ($candidates as $candidate)
-                        <div class="col-md-4" style="height: 500px">
+                        <div class="col-md-4" style="height: 600px">
                             <div class="card text-center containerkanidat" data-candidate="{{ $candidate->candidate_id }}"
                                 onclick="selectCandidate(this)">
                                 <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px"

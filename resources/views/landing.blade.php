@@ -56,7 +56,7 @@
         <h1 class="text-center text-dark">Kandidat</h1>
         <div class="row justify-content-center">
             @foreach ($candidates as $candidate)
-                <div class="col-md-4" style="height: 500px">
+                <div class="col-md-4" style="height: 600px">
                     <div class="card text-center containerkanidat">
                         <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px"
                             src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"

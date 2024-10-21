@@ -1,22 +1,29 @@
-<footer class="footer bg-dark">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-md-start mb-3 mb-md-0">
-                <img src="assets/logoTB/logo pplg.png" alt="Logo" class="footer-logo">
-            </div>
+<footer class="footer bg-dark py-3">
 
-            <div class="col-md-6 text-md-end mb-3 mb-md-0 text-white footer-social-icons">
-                <p class="mb-1">Kontak Kami</p>
-                <a href="https://www.instagram.com/pplg.starbhak/" target="_blank"><i class="bi bi-instagram"></i></a>
-                {{-- <a href="#" target="_blank"><i class="bi bi-tiktok"></i></a>
-                <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="#" target="_blank"><i class="bi bi-youtube"></i></a> --}}
+    <div class="container">
+
+        <div class="row align-items-center">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+
+                <div class="footer-logo">
+                    <img src="{{ asset('assets/logoTB/logo pplg.png') }}" alt="Logo" width="60" height="60"
+                        style="object-fit: cover">
+                </div>
+
+                <div class="footer-social-icons text-white">
+                    <p class="mb-1 text-end">Kontak Kami</p>
+                    <a href="https://www.instagram.com/pplg.starbhak/" target="_blank" class="text-white me-2">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
-        <div class="text-center text-white">
-            <hr>
-            &copy;
-            PPLG StarBhak
+
+        <div class="text-center text-white mt-3">
+            <hr class="bg-light">
+            &copy; PPLG StarBhak
         </div>
     </div>
+
 </footer>
