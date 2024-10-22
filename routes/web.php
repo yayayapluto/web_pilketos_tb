@@ -7,6 +7,14 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\VotingController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/countdown', function () {
+    return view('countdown');
+});
+
+Route::get('/deadline', function () {
+    return view('deadline');
+});
+
 Route::get("/", [ViewController::class, "landing"])->name("landing");
 Route::get("/voting/{uuid}", [ViewController::class, "showCandidate"])->name("candidate");
 Route::get("/voting", [ViewController::class, "showVotingForm"])->name("voting");
