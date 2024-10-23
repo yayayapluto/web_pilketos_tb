@@ -38,6 +38,7 @@
             #headertextvoting {
                 margin-top: 90px;
             }
+            
         }
     </style>
 
@@ -73,14 +74,14 @@ background-size: contain;">
 
                 <div class="row justify-content-center " style="margin-top: 50px; padding-bottom: 10px;">
                     @foreach ($candidates as $candidate)
-                        <div class="col-md-4" style="height: 630px">
-                            <div class="card text-center containerkanidat" style="height: 560px;" data-candidate="{{ $candidate->candidate_id }}"
+                        <div class="col-md-4" style="height: 550px">
+                            <div class="card text-center containerkanidat" style="height: 490px;" data-candidate="{{ $candidate->candidate_id }}"
                                 onclick="selectCandidate(this)">
                                 <img style="height: 285px; width:75%;object-fit:cover; margin-top:15px;border-radius:15px;margin-left:50px"
                                     src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}"
                                     class="fixed-img card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="card-title mb-5">{{ $candidate->name }}</h2>
+                                <div class="card-body" style="margin-top: 10px">
+                                    <h2 class="card-title">{{ $candidate->name }}</h2>
                                 </div>
 
                                 <div class="card-footer d-flex">
@@ -95,11 +96,11 @@ background-size: contain;">
                 </div>
             </div>
 
-            <div class="container" style="margin-top:50px" >
+            <div class="container">
 
 
                 <input type="hidden" id="selectedCandidateId" name="candidate_id" value="">
-                <div class="text-center my-5">
+                <div class="text-center">
                     <button class="btn btn-primary" type="submit">Vote</button>
                 </div>
 

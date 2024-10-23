@@ -3,7 +3,7 @@
 @section('title','welcome');
 
 @section('header')
-<x-client_navbar></x-client_navbar>
+<x-countdownnav></x-countdownnav>
 @endsection
 
 @section('content')
