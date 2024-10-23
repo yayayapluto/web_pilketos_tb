@@ -5,7 +5,7 @@
     <!--begin::App Content-->
     <div class="app-content">
         <div class="container-fluid mt-4">
-            <h2 class="mb-3">Transaction Data</h2>
+            <h2 class="mb-3">Detail data pemilihan</h2>
             <div class="card">
                 <div class="card-body p-0" style="max-height: 300px; overflow-y: auto; border: 1px solid #dee2e6;">
                     <table class="table table-bordered table-striped table-sm">
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <h2 class="mb-4 mt-4">Votes by Period</h2> <!-- Added margin for spacing -->
+            <h2 class="mb-4 mt-4">Data pemmilihan per periode</h2> <!-- Added margin for spacing -->
             <div class="card">
                 <div class="card-body p-0">
                     <div id="votesByPeriodChart" style="height: 300px;"></div>
@@ -63,7 +63,7 @@
             },
             colors: ['#007bff'], // AdminLTE primary color
             title: {
-                text: 'Votes by Period',
+                text: 'Pemilihan per periode',
                 align: 'center',
             },
             dataLabels: {

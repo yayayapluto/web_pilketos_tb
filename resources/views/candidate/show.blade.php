@@ -1,26 +1,24 @@
-@extends("layouts.private")
+@extends('layouts.private')
 
-@section("title", "Candidate Details")
-
-@section("header", "Candidate Details")
-
-@section("content")
-    <div class="container-fluid mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Candidate Information</h3>
-            </div>
-            <div class="card-body">
-                <div class="text-center mb-4">
-                    <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}" class="img-fluid" style="max-width: 200px;">
+@section('content')
+    <main class="app-main">
+        <div class="app-content">
+            <div class="container-fluid mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Detail Kandidat</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="{{ asset('storage/' . $candidate->image) }}" alt="{{ $candidate->name }}" class="img-fluid" style="max-width: 200px;">
+                        <h2>{{ $candidate->name }}</h2>
+                        <span>{!! $candidate->description !!}</span>
+                        <p>Link Eksternal: <a href="{{ $candidate->external_link }}" target="_blank">{{ $candidate->external_link }}</a></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('candidates.index') }}" class="btn btn-secondary">Kembali ke Daftar</a>
+                    </div>
                 </div>
-                <h2 class="text-center">{{ $candidate->name }}</h2>
-                <span>{!! $candidate->description !!}</span>
-                <p>External Link: <a href="{{ $candidate->external_link }}" target="_blank">{{ $candidate->external_link }}</a></p>
-            </div>
-            <div class="card-footer">
-                <a href="{{ route('candidates.index') }}" class="btn btn-secondary">Back to List</a>
             </div>
         </div>
-    </div>
+    </main>
 @endsection

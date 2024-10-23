@@ -15,15 +15,15 @@
     <x-alert />
     <div class="login-box">
         <div class="login-logo">
-            <b>Login</b>
+            <b>Masuk</b>
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Masukkan data yang valid ya</p>
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        <input type="text" class="form-control" name="username" placeholder="Nama" required>
                         <div class="input-group-text">
                             <span class="bi bi-person-fill"></span>
                         </div>

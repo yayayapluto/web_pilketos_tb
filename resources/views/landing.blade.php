@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Welcome')
+@section('title', 'Beranda')
 
 @section('header')
     <x-head />
@@ -41,7 +41,7 @@
             </div>
             <a href="{{ route('voting') }}">
                 <button style="margin-top: 20px" type="button" class="headerbutton">
-                    Pilih
+                    Cusss ke pemilihan
                 </button>
             </a>
         </div>
@@ -68,15 +68,12 @@
                         <div class="card-footer d-flex">
                             <a class="btn btn-dark" href="{{ route('candidate', $candidate->candidate_id) }}"
                                 role="button">
-                                <i class="bi bi-info-circle"></i> Info
+                                <i class="bi bi-info-circle"></i> Cek
                             </a>
                         </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-        <div class="text-center m-5">
-            <a class="btn btn-primary" href="{{ route('voting') }}" role="button">Pilih</a>
         </div>
     </div>
 @endsection

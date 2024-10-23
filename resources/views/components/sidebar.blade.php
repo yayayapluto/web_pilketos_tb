@@ -25,13 +25,13 @@
                         <li class="nav-item">
                             <a href="{{ route('candidates.index') }}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Index</p>
+                                <p>Semua</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('candidates.create') }}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Create New</p>
+                                <p>Tambah</p>
                             </a>
                         </li>
                     </ul>
@@ -39,7 +39,7 @@
                 <li class="nav-item">
                     <a href="{{ route('votingTime') }}" class="nav-link">
                         <i class="nav-icon bi bi-clock"></i>
-                        <p>Voting time</p>
+                        <p>Waktu voting</p>
                     </a>
                 </li>
                 <li class="nav-item">

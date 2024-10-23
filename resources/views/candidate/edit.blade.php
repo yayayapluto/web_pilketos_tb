@@ -2,8 +2,6 @@
 
 @section("title", "Edit Candidate")
 
-@section("header", "Edit Candidate")
-
 @section("content")
     <main class="app-main">
         <div class="app-content">
@@ -18,27 +16,27 @@
                     @method("PUT")
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image</label>
+                        <label for="image" class="form-label">Gambar</label>
                         <input type="file" name="image" id="image" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Nama</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ $candidate->name }}" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">Deskripsi</label>
                         <textarea name="description" id="description" class="form-control" required>{{ $candidate->description }}</textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="external_link" class="form-label">External Link</label>
+                        <label for="external_link" class="form-label">Link eksternal</label>
                         <input type="url" name="external_link" id="external_link" class="form-control" value="{{ $candidate->external_link }}" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update Candidate</button>
-                    <a href="{{ route('candidates.index') }}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
+                    <a href="{{ route('candidates.index') }}" class="btn btn-secondary">Tidak jadi</a>
                 </form>
             </div>
         </div>

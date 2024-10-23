@@ -19,16 +19,16 @@ class AuthController extends Controller
             $data = $req->validated();
             
             if (!Auth::attempt($data)) {
-                return SendRedirect::withMessage("login", false, "Login credential not matched");
+                return SendRedirect::withMessage("login", false, "Data login tidak valid nih");
             }
             return redirect()->route("admin.dashboard");
         } catch (\Throwable $th) {
-            throw SendRedirect::withMessage("login", false, "Error occured while login, please try again");
+            throw SendRedirect::withMessage("login", false, "Muncul error tiba tiba, coba ulang lagi");
         }
     }
 
     public function logout() {
         Auth::logout();
-        return SendRedirect::withMessage("landing", true, "Logged out successfully");
+        return SendRedirect::withMessage("landing", true, "Berhasil keluar!");
     }
 }

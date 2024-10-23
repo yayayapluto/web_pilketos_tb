@@ -141,7 +141,7 @@ class VotingController extends Controller
             ]
         );
 
-        return SendRedirect::withMessage("votingTime", true, "Berhasil memperbaharui waktu voting");
+        return SendRedirect::withMessage("votingTime", true, "Berhasil memperbarui waktu pemilihan");
     }
 
 

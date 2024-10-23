@@ -10,7 +10,7 @@
 
 <div style="background: #0099FF; height:90%; width:100%;">
     <div style="display: flex; align-content:center; justify-content:center; margin-top:300px;color:white;">
-        <h1>Coming Soon</h1>    
+        <h1>Waktu pemiilhan belum dimulai, ditunggu aja yaa!</h1>    
     </div>
     
 </div>

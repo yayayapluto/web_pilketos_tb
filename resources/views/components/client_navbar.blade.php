@@ -45,14 +45,14 @@
                 <li>
                     <a href="{{ route("landing") }}" style="text-decoration: none;">
                         <h5 class="navtxt">
-                            Home
+                            Beranda
                         </h5>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route("voting") }}" style="text-decoration:none;">
                         <h5 class="navtxt">
-                            Kandidat
+                            Pemilihan
                         </h5>
                     </a>
                 </li>

@@ -9,7 +9,7 @@
                 <div class="col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
-                            <h5>Voting Status</h5>
+                            <h5>Status Voting</h5>
                         </div>
                         <div class="card-body p-0">
                             <div id="voteStatusChart" style="height: 300px;"></div>
@@ -20,7 +20,7 @@
                 <div class="col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-header bg-success text-white">
-                            <h5>Candidate Votes</h5>
+                            <h5>Perbandingan pemilihan per kandidat</h5>
                         </div>
                         <div class="card-body p-0">
                             <div id="candidateVoteChart" style="height: 300px;"></div>
@@ -44,7 +44,7 @@
             labels: @json(array_reverse($voteStatusLabel)),
             colors: ['#007bff', '#dc3545'], // AdminLTE colors
             title: {
-                text: 'Voting Status',
+                text: 'Status Voting',
                 align: 'center'
             },
         };
@@ -67,7 +67,7 @@
             },
             colors: ['#28a745'], // AdminLTE success color
             title: {
-                text: 'Candidate Votes',
+                text: 'Hasil pemilihan',
                 align: 'center'
             },
         };

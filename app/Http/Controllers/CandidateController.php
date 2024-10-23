@@ -41,10 +41,10 @@ class CandidateController extends Controller
         }
 
         if (!Candidate::create($data)) {
-            return SendRedirect::withMessage("candidates.create", false, "Failed to store new data, please try again");
+            return SendRedirect::withMessage("candidates.create", false, "Gagal menambahkan data baru, coba lagi");
         }
 
-        return SendRedirect::withMessage("candidates.index", true, "Data stored successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Berhasil menambahkan data baru!");
     }
 
     /**
@@ -53,12 +53,12 @@ class CandidateController extends Controller
     public function show(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "ID Kandidat tidak valid");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Data kandidat tidak ditemukan");
         }
 
         return view("candidate.show", compact("candidate"));
@@ -70,12 +70,12 @@ class CandidateController extends Controller
     public function edit(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "ID Kandidat tidak valid");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Data kandidat tidak ditemukan");
         }
 
         return view("candidate.edit", compact("candidate"));
@@ -87,12 +87,12 @@ class CandidateController extends Controller
     public function update(updateRequest $request, string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "ID Kandidat tidak valid");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Data kandidat tidak ditemukan");
         }
 
         $data = $request->validated();
@@ -103,7 +103,7 @@ class CandidateController extends Controller
 
         $candidate->update($data);
 
-        return SendRedirect::withMessage("candidates.index", true, "Candidate updated successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Berhasil memperbarui data kandidat!");
     }
 
     /**
@@ -112,16 +112,16 @@ class CandidateController extends Controller
     public function destroy(string $uuid)
     {
         if (!uuid_is_valid($uuid)) {
-            return SendRedirect::withMessage("candidates.index", false, "Invalid candidate ID");
+            return SendRedirect::withMessage("candidates.index", false, "ID kandidat tidak valid");
         }
 
         $candidate = Candidate::where('candidate_id', $uuid)->first();
         if (!$candidate) {
-            return SendRedirect::withMessage("candidates.index", false, "Candidate not found");
+            return SendRedirect::withMessage("candidates.index", false, "Data kandidat tidak ditemukan");
         }
 
         $candidate->delete();
 
-        return SendRedirect::withMessage("candidates.index", true, "Candidate deleted successfully");
+        return SendRedirect::withMessage("candidates.index", true, "Berhasil menghapus data kandidat!");
     }
 }

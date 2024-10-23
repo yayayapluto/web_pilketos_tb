@@ -10,7 +10,7 @@
 
 <div style="background: #0099FF; height:90%; width:100%;">
     <div style="display: flex; align-content:center; justify-content:center; margin-top:300px;color:white; text-align:center;">
-        <h1>Terimakasih Sudah Memilih😁</h1>    
+        <h1>Terimakasih Sudah Memilih😁, silahkan menunggu hasil akhir nya</h1>    
     </div>
     
 </div>

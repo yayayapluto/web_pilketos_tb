@@ -17,26 +17,26 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
+                            <label for="image" class="form-label">Gambar</label>
                             <input type="file" name="image" id="image" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">Nama</label>
                             <input type="text" name="name" id="name" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">Deskripsi</label>
                             <textarea name="description" id="description" class="form-control" required></textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="external_link" class="form-label">External Link</label>
+                            <label for="external_link" class="form-label">Link eksternal</label>
                             <input type="url" name="external_link" id="external_link" class="form-control" required>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create Candidate</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>
             </div>

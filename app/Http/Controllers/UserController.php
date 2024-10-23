@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function showDashboardPage() {
         if (!Auth::check()) {
-            return SendRedirect::withMessage("login", false, "Not authenticated");
+            return SendRedirect::withMessage("login", false, "Belum terautentikasi, login dulu");
         }
         
         $voteStatusLabel = ["Sudah", "Belum"];
@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function showMonitorPage() {
         if (!Auth::check()) {
-            return SendRedirect::withMessage("login", false, "Not authenticated");
+            return SendRedirect::withMessage("login", false, "Belum terautentikasi, login dulu");
         }
 
         $voteByPeriodLabel = ["1 Hours", "6 Hours", "12 Hours", "Day", "Week"];
