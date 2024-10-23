@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Voting\storeRequest;
 use App\Models\Voting;
+use App\Models\VotingConfig;
 use App\Responses\SendRedirect;
+use Carbon\Carbon;
+use Config;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
@@ -17,6 +20,13 @@ class VotingController extends Controller
 
     public function store(storeRequest $req)
     {
+        $votingStatus = $this->checkVotingTime();
+        if ($votingStatus === 'before') {
+            return redirect()->route("countdown");
+        } elseif ($votingStatus === 'after') {
+            return redirect()->route("deadline");
+        }
+
         $data = $req->validated();
 
         if ($data["nisn"] == "1234567890") {
@@ -71,36 +81,100 @@ class VotingController extends Controller
     }
 
     private function checkNISN(string $nisn)
-{
-    $client = new Client();
-    $url = "https://absensi.smktarunabhakti.net:3995/api/pilketos/check-nisn";
+    {
+        $client = new Client();
+        $url = "https://absensi.smktarunabhakti.net:3995/api/pilketos/check-nisn";
 
-    $headers = [
-        "X-Secret" => env("X_SECRET_API_TOKEN"),
-        "Content-Type" => "application/json"
-    ];
+        $headers = [
+            "X-Secret" => env("X_SECRET_API_TOKEN"),
+            "Content-Type" => "application/json"
+        ];
 
-    $body = json_encode(['nisn' => $nisn]);
+        $body = json_encode(['nisn' => $nisn]);
 
-    try {
-        $response = $client->post($url, [
-            'headers' => $headers,
-            'body' => $body,
-            'verify' => false // Disable SSL verification
+        try {
+            $response = $client->post($url, [
+                'headers' => $headers,
+                'body' => $body,
+                'verify' => false // Disable SSL verification
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+            return [
+                "status" => $data["success"] ?? false,
+                "data" => $data,
+                "msg" => $data["msg"] ?? "-"
+            ];
+        } catch (RequestException $e) {
+            return [
+                "status" => false,
+                "message" => $e->getMessage()
+            ];
+        }
+    }
+
+    public function votingTimeForm()
+    {
+        $votingConfig = VotingConfig::first();
+
+        $data = [
+            'start' => $votingConfig ? $votingConfig->start_datetime : null,
+            'end' => $votingConfig ? $votingConfig->end_datetime : null,
+        ];
+
+        return view("admin.voting_time", compact('data'));
+    }
+
+
+    public function updateVotingTime(Request $request)
+    {
+        $request->validate([
+            'start' => 'required|date_format:Y-m-d\TH:i',
+            'end' => 'required|date_format:Y-m-d\TH:i|after:start',
         ]);
 
-        $data = json_decode($response->getBody(), true);
+        VotingConfig::updateOrCreate(
+            [],
+            [
+                'start_datetime' => Carbon::createFromFormat('Y-m-d\TH:i', $request->input('start')),
+                'end_datetime' => Carbon::createFromFormat('Y-m-d\TH:i', $request->input('end')),
+            ]
+        );
+
+        return SendRedirect::withMessage("votingTime", true, "Berhasil memperbaharui waktu voting");
+    }
+
+
+    public function checkVotingTime()
+    {
+        [$startDateTime, $endDateTime] = $this->getVotingTime();
+
+        if (is_null($startDateTime) && is_null($endDateTime)) {
+            return "before";
+        }
+
+        $currentDateTime = Carbon::now();
+
+        if ($currentDateTime->lt($startDateTime)) {
+            return 'before';
+        } elseif ($currentDateTime->gt($endDateTime)) {
+            return 'after';
+        }
+
+        return 'open';
+    }
+
+    private function getVotingTime()
+    {
+        $votingConfig = VotingConfig::first();
+
+        if (!$votingConfig) {
+            return [null, null];
+        }
+
         return [
-            "status" => $data["success"] ?? false,
-            "data" => $data,
-            "msg" => $data["msg"] ?? "-"
-        ];
-    } catch (RequestException $e) {
-        return [
-            "status" => false,
-            "message" => $e->getMessage()
+            Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->start_datetime),
+            Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->end_datetime),
         ];
     }
-}
-
 }

@@ -1,4 +1,4 @@
-@extends("layouts.candidate.show")
+@extends("layouts.private")
 
 @section("title", "Candidate Details")
 

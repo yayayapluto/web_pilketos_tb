@@ -1,4 +1,4 @@
-@extends('layouts.candidate.index')
+@extends('layouts.private')
 
 @section('content')
     <main class="app-main">

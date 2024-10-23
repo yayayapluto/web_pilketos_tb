@@ -29,6 +29,13 @@ class DatabaseSeeder extends Seeder
             'password' => \Hash::make("Smktb@123"),
             'created_by' => 'system',
         ]);
+
+        User::create([
+            'user_id' => (string) \Str::uuid(),
+            'username' => 'dioBrando',
+            'password' => \Hash::make("zawarudo"),
+            'created_by' => 'system',
+        ]);
         Candidate::factory(3)->create();
         //Voting::factory(100)->create();
 

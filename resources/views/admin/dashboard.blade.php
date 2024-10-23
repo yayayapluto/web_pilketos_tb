@@ -1,4 +1,4 @@
-@extends('layouts.admin.dashboard')
+@extends('layouts.private')
 
 @section('content')
 <main class="app-main">

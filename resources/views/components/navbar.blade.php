@@ -1,19 +1,24 @@
 <!--begin::Header-->
 <nav class="app-header navbar navbar-expand bg-body">
     <div class="container-fluid">
-        <span class="navbar-text">SMK Taruna Bhakti Depok</span>
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown user-menu">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="d-none d-md-inline">
-                        <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
-                    </span>
+        <!-- Start navbar links -->
+        <ul class="navbar-nav m-1">
+            <li class="nav-item">
+                <a class="nav-link border rounded" data-lte-toggle="sidebar" href="#" role="button">
+                    <i class="bi bi-list"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </li>
-                </ul>
+            </li>
+        </ul>
+        <!-- End navbar links -->
+        
+        <strong class="navbar-text">SMK Taruna Bhakti Depok</strong>
+        
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="btn btn-outline-dark ms-3">
+                    <i class="bi bi-box-arrow-right"></i> <!-- Sign out icon -->
+                    Sign out
+                </a>
             </li>
         </ul>
     </div>

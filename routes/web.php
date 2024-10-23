@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/countdown', function () {
     return view('countdown');
-});
+})->name("countdown");
 
 Route::get('/deadline', function () {
     return view('deadline');
-});
+})->name("deadline");
 
 Route::get("/", [ViewController::class, "landing"])->name("landing");
 Route::get("/voting/{uuid}", [ViewController::class, "showCandidate"])->name("candidate");
@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/monitor', [UserController::class, 'showMonitorPage'])->name('admin.monitor');
     Route::resource('/admin/candidates', CandidateController::class);
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get("/admin/voting-time", [VotingController::class, "votingTimeForm"])->name("votingTime");
+    Route::post("/admin/voting-time", [VotingController::class, "updateVotingTime"])->name("votingTime.update");
 });
 
 // Guest routes
