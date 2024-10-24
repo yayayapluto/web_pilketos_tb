@@ -101,7 +101,7 @@ background-size: contain;">
 
                 <input type="hidden" id="selectedCandidateId" name="candidate_id" value="">
                 <div class="text-center">
-                    <button class="btn btn-primary" type="submit">Vote</button>
+                    <button class="btn btn-primary btn-lg" type="submit">Vote</button>
                 </div>
 
             </div>

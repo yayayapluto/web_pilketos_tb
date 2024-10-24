@@ -30,10 +30,11 @@ class ViewController extends Controller
     public function showVotingForm()
     {
         $votingStatus = $this->votingController->checkVotingTime();
-        if ($votingStatus === 'before') {
-            return redirect()->route("countdown");
-        } elseif ($votingStatus === 'after') {
-            return redirect()->route("deadline");
+
+        if ($votingStatus['status'] == "before") {
+            return redirect()->route("countdown")->with("datetime", $votingStatus['datetime']);
+        } elseif ($votingStatus['status'] == "after") {
+            return redirect()->route("deadline")->with("datetime", $votingStatus['datetime']);
         }
 
         $candidates = Candidate::all();

@@ -21,10 +21,12 @@ class VotingController extends Controller
     public function store(storeRequest $req)
     {
         $votingStatus = $this->checkVotingTime();
-        if ($votingStatus === 'before') {
-            return redirect()->route("countdown");
-        } elseif ($votingStatus === 'after') {
-            return redirect()->route("deadline");
+
+        if ($votingStatus['status'] == "before") {
+            return SendRedirect::withJson("countdown", false, "Pemilihan belum dimulai");
+        } elseif ($votingStatus['status'] == "after") {
+            return SendRedirect::withJson("deadline", false, "Pemilihan udah selesai");
+
         }
 
         $data = $req->validated();
@@ -128,53 +130,77 @@ class VotingController extends Controller
 
     public function updateVotingTime(Request $request)
     {
+        $timezone = 'Asia/Jakarta';
+
         $request->validate([
             'start' => 'required|date_format:Y-m-d\TH:i',
             'end' => 'required|date_format:Y-m-d\TH:i|after:start',
         ]);
 
+        $startDateTime = Carbon::createFromFormat('Y-m-d\TH:i', $request->input('start'), $timezone);
+        $endDateTime = Carbon::createFromFormat('Y-m-d\TH:i', $request->input('end'), $timezone);
+
         VotingConfig::updateOrCreate(
             [],
             [
-                'start_datetime' => Carbon::createFromFormat('Y-m-d\TH:i', $request->input('start')),
-                'end_datetime' => Carbon::createFromFormat('Y-m-d\TH:i', $request->input('end')),
+                'start_datetime' => $startDateTime->format('Y-m-d\TH:i'),
+                'end_datetime' => $endDateTime->format('Y-m-d\TH:i'),
             ]
         );
 
         return SendRedirect::withMessage("votingTime", true, "Berhasil memperbarui waktu pemilihan");
     }
 
-
     public function checkVotingTime()
     {
+        $timezone = "Asia/Jakarta";
         [$startDateTime, $endDateTime] = $this->getVotingTime();
+        $currentDateTime = Carbon::now($timezone);
 
         if (is_null($startDateTime) && is_null($endDateTime)) {
-            return "before";
+            return [
+                'status' => 'before',
+                'remaining_hours' => "Tidak tahu",
+            ];
         }
 
-        $currentDateTime = Carbon::now();
-
-        if ($currentDateTime->lt($startDateTime)) {
-            return 'before';
-        } elseif ($currentDateTime->gt($endDateTime)) {
-            return 'after';
+        if ($currentDateTime->lessThan($startDateTime)) {
+            return [
+                'status' => 'before',
+                'datetime' => $startDateTime,
+            ];
         }
 
-        return 'open';
+        if ($currentDateTime->greaterThanOrEqualTo($endDateTime)) {
+            return [
+                'status' => 'after',
+                'datetime' => $endDateTime,
+            ];
+        }
+
+        return [
+            'status' => 'open',
+            'datetime' => null,
+        ];
     }
+
 
     private function getVotingTime()
     {
+        $timezone = "Asia/Jakarta";
         $votingConfig = VotingConfig::first();
 
         if (!$votingConfig) {
             return [null, null];
         }
 
+        $startDatetime = Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->start_datetime, $timezone);
+        $endDatetime = Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->end_datetime, $timezone);
+
         return [
-            Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->start_datetime),
-            Carbon::createFromFormat('Y-m-d H:i:s', $votingConfig->end_datetime),
+            $startDatetime->format('Y-m-d H:i:s'),
+            $endDatetime->format('Y-m-d H:i:s'),
         ];
     }
+
 }

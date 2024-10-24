@@ -1,6 +1,6 @@
 <aside class="app-sidebar control-sidebar-push bg-body-secondary shadow" data-bs-theme="dark">
     <div class="sidebar-brand">
-        <a href="./index.html" class="brand-link">
+        <a href="#" class="brand-link">
             <span class="brand-text fw-light">Pemilihan Ketua OSIS</span>
         </a>
     </div>

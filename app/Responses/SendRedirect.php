@@ -31,7 +31,7 @@ class SendRedirect
         return response()->json([
             "success" => $success,
             "msg" => $message ?? "Berhasil!",
-            "route" => $route,
+            "route" => route($route),
             "easter" => $easter
         ]);
     }
